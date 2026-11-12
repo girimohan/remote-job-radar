@@ -1,0 +1,93 @@
+# Everything you are likely to tune lives in this file.
+# Edit, commit, and the next daily run picks it up.
+
+profile:
+  # Skills counted when they appear in a job title or description.
+  skills:
+    - python
+    - fastapi
+    - rag
+    - llm
+    - langchain
+    - llamaindex
+    - vector database
+    - embeddings
+    - pytorch
+    - mlops
+    - docker
+    - postgres
+    - supabase
+    - next.js
+    - react
+    - typescript
+    - aws
+    - kubernetes
+    - fine-tuning
+    - agents
+
+# Roles are checked top to bottom; the first one whose keywords appear in the
+# job title wins. "weight" (0-1) says how much you want that role.
+roles:
+  - name: AI Trainer / Evaluator
+    weight: 0.7
+    title_any: [ai trainer, freelance ai trainer, ai tutor, ai evaluator, llm evaluator, model evaluator, data annotation, data annotator,
+                ai training, code reviewer, ai data, rater]
+  - name: AI / LLM Engineer
+    weight: 1.0
+    title_any: [ai engineer, llm, generative ai, genai, gen ai, applied ai, ai agent, agent engineer, agentic,
+                rag, ai developer, ai software engineer, ai product engineer, ai backend, ai platform, ai/ml, ai & ml,
+                ai application, ai research engineer, conversational ai, nlp engineer]
+  - name: ML Engineer / MLOps
+    weight: 0.95
+    title_any: [machine learning engineer, ml engineer, mlops, ml ops, ml platform, machine learning, ml infrastructure,
+                applied scientist, research engineer, ml developer]
+  - name: Forward Deployed / Solutions Engineer
+    weight: 0.8
+    title_any: [forward deployed, solutions engineer, solution engineer, automation engineer, ai solutions,
+                implementation engineer, integration engineer, customer engineer, ai consultant, ai automation]
+  - name: Backend Engineer
+    weight: 0.85
+    title_any: [backend, back-end, back end, python developer, python engineer, api engineer, platform engineer,
+                software engineer, software developer]
+  - name: Full-Stack Engineer
+    weight: 0.8
+    title_any: [full stack, full-stack, fullstack, product engineer, web developer, next.js, react developer]
+  - name: Data Engineer
+    weight: 0.7
+    title_any: [data engineer, analytics engineer, data platform]
+
+# A job whose title contains any of these is dropped, whatever the role match.
+exclude_title: [director, vp, vice president, head of, engineering manager, manager, recruiter, account executive,
+                sales, marketing, designer, attorney, counsel, nurse, driver, embedded, firmware, hardware,
+                mechanical, electrical, civil, ios, android, salesforce, sap, servicenow, .net, php, ruby, golang,
+                rust, c++, java, scala, security clearance]
+
+# Level words in the title. Junior adds points, staff-level subtracts.
+levels:
+  junior: [junior, jr, graduate, new grad, entry level, entry-level, intern, internship, trainee, associate, early career, working student]
+  senior: [senior, sr, experienced]
+  staff:  [staff, principal, lead, architect, distinguished, fellow]
+
+# Which eligibility labels are kept in the output.
+#   finland     = job names Finland or the Nordics
+#   europe      = remote and open to Europe / EMEA / EU time zones
+#   worldwide   = remote and open anywhere
+#   unclear     = remote, but the posting does not say where from (check it)
+#   eu_country  = remote, tied to one other European country (usually needs residence there)
+keep_eligibility: [finland, europe, worldwide, unclear, eu_country]
+
+min_score: 35
+
+# Company names containing any of these are treated as agencies/aggregators and dropped.
+agency_blocklist: [jobgether, jobs for humanity, staffing, recruitment agency, talent solutions,
+                   crossing hurdles, it consulting services, virtualvocations, bjak, 10xteam]
+
+sources:
+  greenhouse: {enabled: true}
+  lever: {enabled: true}
+  ashby: {enabled: true}
+  himalayas: {enabled: true, max_pages: 100}   # 20 listings per page, newest first
+  remoteok: {enabled: true}
+  remotive: {enabled: true}
+  weworkremotely: {enabled: true}
+  hackernews: {enabled: true}

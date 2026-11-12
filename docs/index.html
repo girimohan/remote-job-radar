@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Remote Job Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDF1EE; --panel:#F8FAF8; --ink:#13231E; --muted:#56655F; --line:#CCD6D0;
+  --pine:#0B6B50; --pine-soft:#D5E9E0; --amber:#A85F00; --amber-soft:#F6E6C8; --slate-soft:#E0E5E2; --danger:#A3352B;
+  --display:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#0F1B17; --panel:#15251F; --ink:#E6EEEA; --muted:#9DB0A8; --line:#2A3D36;
+  --pine:#5FD1A7; --pine-soft:#173B30; --amber:#F0B45A; --amber-soft:#3D2E12; --slate-soft:#22332D; --danger:#F08A7E;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 var(--body)}
+a{color:var(--pine)}
+button,select,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--pine);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+
+header.top{padding:28px 0 0}
+h1{font:700 clamp(28px,4.4vw,44px)/1.05 var(--display);letter-spacing:-.02em;margin:0}
+.sub{color:var(--muted);margin:6px 0 0;max-width:64ch}
+
+/* The sieve: where today's postings went. Segment widths are proportional on a log scale. */
+.sieve{margin:22px 0 6px}
+.sieve-bar{display:flex;height:34px;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.sieve-bar span{display:block;min-width:3px}
+.s-role{background:var(--slate-soft)} .s-us{background:#C98F86} .s-other{background:#D8B7A0}
+.s-misc{background:var(--line)} .s-match{background:var(--pine)}
+@media (prefers-color-scheme:dark){.s-us{background:#7A4A44}.s-other{background:#6B5646}}
+.sieve-key{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:8px;color:var(--muted);font-size:13.5px}
+.sieve-key b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.sieve-key i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+
+nav.tabs{display:flex;gap:4px;margin-top:22px;border-bottom:1px solid var(--line)}
+nav.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;cursor:pointer;font-weight:500;color:var(--muted)}
+nav.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--pine)}
+
+.layout{display:grid;grid-template-columns:250px 1fr;gap:28px;padding:22px 0 60px}
+@media (max-width:820px){.layout{grid-template-columns:1fr;gap:14px}}
+aside h2{font:700 15px/1.2 var(--display);margin:18px 0 8px}
+aside h2:first-child{margin-top:0}
+.pick{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;background:none;border:0;border-radius:5px;padding:5px 8px;cursor:pointer}
+.pick:hover{background:var(--slate-soft)}
+.pick[aria-pressed=true]{background:var(--pine-soft);font-weight:600}
+.pick span:last-child{color:var(--muted);font-variant-numeric:tabular-nums}
+label.chk{display:flex;gap:8px;align-items:flex-start;padding:4px 8px;cursor:pointer}
+label.chk input{margin-top:4px;accent-color:var(--pine)}
+@media (max-width:820px){aside details>div{padding-top:8px}}
+aside summary{cursor:pointer;font-weight:600;padding:8px 0}
+@media (min-width:821px){aside summary{display:none}}
+
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.bar input[type=search]{flex:1 1 220px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.bar select{padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.count{color:var(--muted);font-size:13.5px;margin:0 0 6px}
+
+ol.jobs{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+ol.jobs>li{border-bottom:1px solid var(--line)}
+.row{display:grid;grid-template-columns:54px 1fr auto;gap:14px;align-items:start;width:100%;padding:12px 4px;background:none;border:0;text-align:left;cursor:pointer}
+.row:hover{background:var(--panel)}
+.score{font:700 22px/1 var(--display);font-variant-numeric:tabular-nums;padding-top:2px}
+.score small{display:block;height:4px;margin-top:6px;border-radius:2px;background:var(--line);overflow:hidden}
+.score small b{display:block;height:100%;background:var(--pine)}
+.title{font-weight:600;font-size:16px;line-height:1.3}
+.meta{color:var(--muted);font-size:13.5px;margin-top:2px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.tag{font-size:12.5px;padding:1px 8px;border-radius:99px;background:var(--slate-soft)}
+.tag.ok{background:var(--pine-soft);color:var(--pine)}
+.tag.check{background:var(--amber-soft);color:var(--amber)}
+.tag.new{background:var(--amber);color:var(--paper);font-weight:600}
+.state{font-size:13px;color:var(--muted);white-space:nowrap;padding-top:4px}
+.state.on{color:var(--pine);font-weight:600}
+.more{padding:2px 4px 18px 72px;display:grid;gap:12px}
+@media (max-width:600px){.more{padding-left:4px}.row{grid-template-columns:44px 1fr}.state{grid-column:2}}
+.more p{margin:0;max-width:72ch}
+.why{color:var(--muted);font-size:13.5px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{display:inline-block;padding:7px 14px;border-radius:6px;border:1px solid var(--line);background:var(--panel);cursor:pointer;text-decoration:none;color:var(--ink);font-weight:500}
+.btn.primary{background:var(--pine);border-color:var(--pine);color:var(--paper)}
+.more select{padding:7px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.more textarea{width:100%;max-width:72ch;min-height:58px;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--panel);resize:vertical}
+.empty{padding:36px 4px;color:var(--muted);max-width:60ch}
+.showmore{margin:16px 0}
+
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;padding:22px 0 60px}
+.board h2{font:700 16px/1.2 var(--display);margin:0 0 8px;padding-bottom:6px;border-bottom:2px solid var(--ink)}
+.board ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.board li{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:9px 10px;font-size:14px}
+.board li a{font-weight:600;text-decoration:none}
+.board li span{display:block;color:var(--muted);font-size:13px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;padding-top:20px}
+
+.guide{max-width:70ch;padding:22px 0 60px}
+.guide h2{font:700 20px/1.2 var(--display);margin:26px 0 6px}
+.guide ol,.guide ul{padding-left:20px}
+.guide li{margin:5px 0}
+.health{font-size:13.5px;color:var(--muted)}
+.health .bad{color:var(--danger);font-weight:600}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>Remote jobs you can take from Finland</h1>
+    <p class="sub" id="sub">Loading today's list…</p>
+    <div class="sieve" id="sieve" hidden>
+      <div class="sieve-bar" id="sieveBar" role="img"></div>
+      <div class="sieve-key" id="sieveKey"></div>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="jobs">Jobs</button>
+      <button role="tab" aria-selected="false" data-tab="board">My applications</button>
+      <button role="tab" aria-selected="false" data-tab="guide">How to apply</button>
+    </nav>
+  </header>
+
+  <section id="tab-jobs" class="layout">
+    <aside>
+      <details open id="filters">
+        <summary>Filters</summary>
+        <div>
+          <h2>Role</h2>
+          <div id="roles"></div>
+          <h2>Open to</h2>
+          <div id="elig"></div>
+          <h2>Level</h2>
+          <div id="levels"></div>
+          <h2>Show</h2>
+          <label class="chk"><input type="checkbox" id="onlyNew"> <span>Only jobs first seen today</span></label>
+          <label class="chk"><input type="checkbox" id="hideDone" checked> <span>Hide jobs I marked “Not for me”</span></label>
+        </div>
+      </details>
+    </aside>
+    <main>
+      <div class="bar">
+        <input type="search" id="q" placeholder="Search title, company or skill" aria-label="Search jobs">
+        <select id="sort" aria-label="Sort by">
+          <option value="score">Best match first</option>
+          <option value="new">Newest first</option>
+          <option value="company">Company A–Z</option>
+        </select>
+      </div>
+      <p class="count" id="count"></p>
+      <ol class="jobs" id="list"></ol>
+      <button class="btn showmore" id="showMore" hidden>Show 100 more</button>
+    </main>
+  </section>
+
+  <section id="tab-board" hidden>
+    <div class="tools">
+      <button class="btn" id="export">Download my tracker (backup)</button>
+      <label class="btn">Restore from backup <input type="file" id="import" accept="application/json" hidden></label>
+    </div>
+    <p class="health">Statuses and notes are saved in this browser only. Download a backup before switching device or clearing browser data.</p>
+    <div class="board" id="board"></div>
+  </section>
+
+  <section id="tab-guide" class="guide" hidden>
+    <h2>Each morning</h2>
+    <ol>
+      <li>Open <b>Jobs</b>, tick “Only jobs first seen today”, and read the top ten.</li>
+      <li>Expand a job to see why it matched and where it is open to. If it says “Check the posting”, open it and look for a location or work-authorisation line before spending time on it.</li>
+      <li>Mark what you will not apply to as “Not for me” so it stays out of the way.</li>
+    </ol>
+    <h2>Applying</h2>
+    <ol>
+      <li>Press <b>Open posting</b>. Applications always go through the company's own form; this tool never applies for you.</li>
+      <li>Press <b>Copy tailoring prompt</b>, paste it into Claude together with your CV, and use the result to adjust your CV summary and write the short answers.</li>
+      <li>Where the form asks for location or work authorisation, say: based in Finland (EU), available as a contractor invoicing through your own registered business, or as an employee through an employer of record.</li>
+      <li>Set the status to “Applied” and note the date and any contact name.</li>
+    </ol>
+    <h2>What the labels mean</h2>
+    <ul>
+      <li><b>Europe</b>, <b>Finland</b>, <b>Worldwide</b>: the posting says so in its location or description.</li>
+      <li><b>Check the posting</b>: it is remote but does not say from where. Many of these turn out to be US-only.</li>
+      <li><b>One European country</b>: remote, but tied to a country such as the UK or Germany. Usually needs residence there; worth asking only when the fit is very strong.</li>
+    </ul>
+    <h2>Change what you see</h2>
+    <p>Roles, keywords, skills and the score cut-off live in <code>config.yaml</code> in the repository. Edit it there and the next daily run uses it.</p>
+    <h2>Source health</h2>
+    <div class="health" id="health"></div>
+  </section>
+</div>
+
+<script>
+const ELIG = {europe:["Europe","ok"], finland:["Finland","ok"], worldwide:["Worldwide","ok"],
+              unclear:["Check the posting","check"], eu_country:["One European country",""]};
+const LEVEL = {junior:"Junior", mid:"Mid / not stated", senior:"Senior", staff:"Staff or lead"};
+const STATUS = ["Not started","Saved","Applied","Interview","Offer","Rejected","Not for me"];
+const KEY = "remote-job-radar.tracker.v1";
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = n => Number(n || 0).toLocaleString("en");
+
+let data = null, tracker = {}, open = new Set(), limit = 100;
+const f = {role:null, elig:new Set(["europe","finland","worldwide","unclear"]), level:new Set(["junior","mid","senior"]),
+           q:"", sort:"score", onlyNew:false, hideDone:true};
+
+try { tracker = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch { tracker = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(tracker)); } catch {} }
+// Tracker entries are keyed by company + title so they survive a job getting a new id.
+const tkey = j => (j.company + " " + j.title).toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+const statusOf = j => (tracker[tkey(j)] || {}).status || "Not started";
+
+function setStatus(j, status){
+  const k = tkey(j), t = tracker[k] || {};
+  Object.assign(t, {status, title:j.title, company:j.company, url:j.url, updated:new Date().toISOString().slice(0,10)});
+  tracker[k] = t; save();
+}
+
+function visible(){
+  const q = f.q.trim().toLowerCase();
+  let rows = data.jobs.filter(j =>
+    (!f.role || j.role === f.role) && f.elig.has(j.eligibility) && f.level.has(j.level) &&
+    (!f.onlyNew || j.first_seen === data.date) && (!f.hideDone || statusOf(j) !== "Not for me") &&
+    (!q || (j.title+" "+j.company+" "+j.snippet+" "+j.reasons.join(" ")).toLowerCase().includes(q)));
+  if (f.sort === "new") rows.sort((a,b) => (b.posted||"").localeCompare(a.posted||"") || b.score-a.score);
+  else if (f.sort === "company") rows.sort((a,b) => a.company.localeCompare(b.company) || b.score-a.score);
+  else rows.sort((a,b) => b.score-a.score);
+  return rows;
+}
+
+function picks(el, items, isOn, onClick){
+  el.innerHTML = items.map(([val,label,n]) =>
+    `<button class="pick" aria-pressed="${isOn(val)}" data-v="${esc(val)}"><span>${esc(label)}</span><span>${fmt(n)}</span></button>`).join("");
+  el.querySelectorAll("button").forEach(b => b.onclick = () => { onClick(b.dataset.v); limit = 100; render(); });
+}
+
+function renderFilters(){
+  // Counts respect the other filters, so each number is what you would see after clicking.
+  const base = (skip) => data.jobs.filter(j =>
+    (skip==="role" || !f.role || j.role===f.role) && (skip==="elig" || f.elig.has(j.eligibility)) &&
+    (skip==="level" || f.level.has(j.level)) && (!f.hideDone || statusOf(j)!=="Not for me"));
+  const count = (rows, key) => rows.reduce((m,j) => (m[j[key]] = (m[j[key]]||0)+1, m), {});
+  const r = count(base("role"), "role");
+  picks($("roles"), [["", "All roles", base("role").length], ...data.roles.map(n => [n, n, r[n]||0])],
+        v => (f.role||"") === v, v => f.role = v || null);
+  const e = count(base("elig"), "eligibility");
+  picks($("elig"), Object.keys(ELIG).map(k => [k, ELIG[k][0], e[k]||0]), v => f.elig.has(v),
+        v => f.elig.has(v) ? f.elig.delete(v) : f.elig.add(v));
+  const l = count(base("level"), "level");
+  picks($("levels"), Object.keys(LEVEL).map(k => [k, LEVEL[k], l[k]||0]), v => f.level.has(v),
+        v => f.level.has(v) ? f.level.delete(v) : f.level.add(v));
+}
+
+function prompt(j){
+  return `I am applying for this job. Using my CV (attached), do three things:
+1. Rewrite my CV summary in 3 lines for this role, using only facts from my CV.
+2. Pick the 4 CV bullets that fit best and tighten them toward what this posting asks for.
+3. Draft a 120-word note to the hiring manager. Say I am based in Finland (EU) and can work as a contractor invoicing through my own business.
+
+Job: ${j.title}
+Company: ${j.company}
+Location: ${j.location || "Remote"}
+Link: ${j.url}
+Posting excerpt: ${j.snippet}`;
+}
+
+function rowHtml(j){
+  const [elabel, ecls] = ELIG[j.eligibility] || [j.eligibility,""];
+  const st = statusOf(j), isOpen = open.has(j.id), note = (tracker[tkey(j)]||{}).note || "";
+  const meta = [j.company, j.location || "Remote", j.salary, j.posted ? "posted "+j.posted : ""].filter(Boolean).map(esc).join(", ");
+  return `<li>
+    <button class="row" aria-expanded="${isOpen}" data-id="${esc(j.id)}">
+      <span class="score" aria-label="Match score ${j.score} of 100">${j.score}<small><b style="width:${j.score}%"></b></small></span>
+      <span><span class="title">${esc(j.title)}</span>
+        <span class="meta" style="display:block">${meta}</span>
+        <span class="tags">${j.first_seen===data.date && !data.first_run ? '<span class="tag new">New today</span>':''}
+          <span class="tag ${ecls}">${esc(elabel)}</span><span class="tag">${esc(j.role)}</span>
+          ${j.level!=="mid" ? `<span class="tag">${esc(LEVEL[j.level])}</span>`:''}</span></span>
+      <span class="state ${st!=="Not started"?"on":""}">${st!=="Not started"?esc(st):""}</span>
+    </button>
+    ${isOpen ? `<div class="more">
+      <p class="why"><b>Where from:</b> ${esc(j.eligibility_reason)}.${j.reasons.length?` <b>Why it matched:</b> ${esc(j.reasons.join("; "))}.`:""} Found on ${esc(j.source)}.</p>
+      ${j.snippet ? `<p>${esc(j.snippet)}${j.snippet.length>=420?"…":""}</p>`:""}
+      <div class="actions">
+        <a class="btn primary" href="${esc(j.url)}" target="_blank" rel="noopener">Open posting</a>
+        <button class="btn" data-copy="${esc(j.id)}">Copy tailoring prompt</button>
+        <select data-status="${esc(j.id)}" aria-label="Application status">${STATUS.map(s=>`<option${s===st?" selected":""}>${s}</option>`).join("")}</select>
+      </div>
+      <textarea data-note="${esc(j.id)}" placeholder="Notes: date applied, contact, follow-up" aria-label="Notes">${esc(note)}</textarea>
+    </div>`:""}
+  </li>`;
+}
+
+function render(){
+  renderFilters();
+  const rows = visible(), shown = rows.slice(0, limit), byId = Object.fromEntries(data.jobs.map(j => [j.id, j]));
+  $("count").textContent = rows.length ? `${fmt(rows.length)} jobs match these filters` : "";
+  $("list").innerHTML = shown.map(rowHtml).join("") ||
+    `<li class="empty">No jobs match these filters. Clear the search, or switch on more “Open to” and “Level” options on the left.</li>`;
+  $("showMore").hidden = rows.length <= limit;
+  $("list").querySelectorAll(".row").forEach(b => b.onclick = () => { open.has(b.dataset.id) ? open.delete(b.dataset.id) : open.add(b.dataset.id); render(); });
+  $("list").querySelectorAll("[data-status]").forEach(s => s.onchange = () => { setStatus(byId[s.dataset.status], s.value); render(); });
+  $("list").querySelectorAll("[data-note]").forEach(t => t.onchange = () => {
+    const j = byId[t.dataset.note]; if (!tracker[tkey(j)]) setStatus(j, "Saved");
+    tracker[tkey(j)].note = t.value; save(); });
+  $("list").querySelectorAll("[data-copy]").forEach(b => b.onclick = async () => {
+    try { await navigator.clipboard.writeText(prompt(byId[b.dataset.copy])); b.textContent = "Copied"; }
+    catch { b.textContent = "Copy failed, select the text manually"; }
+    setTimeout(() => b.textContent = "Copy tailoring prompt", 1800); });
+}
+
+function renderBoard(){
+  const cols = STATUS.filter(s => s !== "Not started" && s !== "Not for me");
+  const items = Object.values(tracker);
+  $("board").innerHTML = cols.map(s => {
+    const mine = items.filter(t => t.status === s).sort((a,b) => (b.updated||"").localeCompare(a.updated||""));
+    return `<div><h2>${s} (${mine.length})</h2><ul>${mine.map(t =>
+      `<li><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.title)}</a><span>${esc(t.company)}, ${esc(t.updated||"")}</span>${t.note?`<span>${esc(t.note)}</span>`:""}</li>`).join("")
+      || `<li><span>Nothing here yet. Set a status on a job in the Jobs tab.</span></li>`}</ul></div>`; }).join("");
+}
+
+function renderHeader(){
+  const fu = data.funnel, when = new Date(data.generated_at);
+  const fresh = data.first_run ? `${fmt(fu.matched)} matching jobs found` : `${fmt(data.new_today)} new today, ${fmt(fu.matched)} open in total`;
+  $("sub").textContent = `${fresh}. Last checked ${when.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"})}.`;
+  const misc = fu.not_remote + fu.agency + fu.duplicate + fu.low_score;
+  const seg = [["s-role","not one of your roles",fu.role_mismatch],["s-us","US-only",fu.us_only],["s-other","other regions",fu.other_region],
+               ["s-misc","not remote, agency, duplicate or weak match",misc],["s-match","matches",fu.matched]];
+  $("sieveBar").innerHTML = seg.map(([c,,n]) => `<span class="${c}" style="flex:${Math.log10(n+1)+0.01}"></span>`).join("");
+  $("sieveBar").setAttribute("aria-label", `Of ${fmt(fu.collected)} postings collected: ` + seg.map(([,l,n]) => `${fmt(n)} ${l}`).join(", "));
+  $("sieveKey").innerHTML = `<span><b>${fmt(fu.collected)}</b> postings collected</span>` +
+    seg.map(([c,l,n]) => `<span><i class="${c}"></i><b>${fmt(n)}</b> ${l}</span>`).join("");
+  $("sieve").hidden = false;
+  $("health").innerHTML = data.sources.map(s => `<div>${esc(s.name)}: ${s.ok ? "working" : `<span class="bad">failed (${esc(s.error)})</span>`}, ${fmt(s.fetched)} postings read, ${fmt(s.matched)} matched${s.detail?`. ${esc(s.detail)}`:""}</div>`).join("");
+}
+
+document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => {
+  document.querySelectorAll("nav.tabs button").forEach(x => x.setAttribute("aria-selected", x === b));
+  ["jobs","board","guide"].forEach(t => $("tab-"+t).hidden = t !== b.dataset.tab);
+  if (b.dataset.tab === "board") renderBoard();
+});
+$("q").oninput = e => { f.q = e.target.value; limit = 100; render(); };
+$("sort").onchange = e => { f.sort = e.target.value; render(); };
+$("onlyNew").onchange = e => { f.onlyNew = e.target.checked; limit = 100; render(); };
+$("hideDone").onchange = e => { f.hideDone = e.target.checked; render(); };
+$("showMore").onclick = () => { limit += 100; render(); };
+$("export").onclick = () => {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(tracker, null, 1)], {type:"application/json"}));
+  a.download = "job-tracker-backup.json"; a.click(); URL.revokeObjectURL(a.href);
+};
+$("import").onchange = async e => {
+  try { const t = JSON.parse(await e.target.files[0].text()); if (t && typeof t === "object") { tracker = {...tracker, ...t}; save(); renderBoard(); } }
+  catch { $("board").insertAdjacentHTML("beforebegin", `<p class="health"><span class="bad">That file is not a tracker backup.</span></p>`); }
+};
+if (matchMedia("(max-width:820px)").matches) $("filters").open = false;
+
+fetch("jobs.json", {cache:"no-store"}).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(d => { data = d; renderHeader(); render(); })
+  .catch(() => { $("sub").textContent = "The job list could not be loaded. If you opened this file directly, run “python -m http.server -d docs” and open http://localhost:8000. Otherwise the first daily run has not finished yet."; });
+</script>
+</body>
+</html>
