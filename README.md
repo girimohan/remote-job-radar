@@ -21,9 +21,10 @@ ones open to Finland, Europe or worldwide, and scores them against the roles and
 collect  ->  match role  ->  where can it be done from?  ->  score  ->  dedupe  ->  dashboard + digest
 ```
 
-1. **Collect.** Public job-board APIs of Greenhouse, Lever and Ashby for the ~570 companies in
-   `data/companies.json`, plus Himalayas, Remote OK, Remotive, We Work Remotely and the monthly Hacker News
-   "Who is hiring?" thread.
+1. **Collect.** Public job-board APIs of Greenhouse, Lever, Ashby and SmartRecruiters for the ~600 companies in
+   `data/companies.json` (including Finnish and Nordic employers such as Wolt, Supercell, ICEYE, Oura, RELEX,
+   Reaktor and Solita), plus Himalayas, Remote OK, Remotive, We Work Remotely, Jobicy, Arbeitnow, Working Nomads
+   and the monthly Hacker News "Who is hiring?" thread.
 2. **Match role.** Job titles are matched against the keyword lists in `config.yaml`, on whole words only.
 3. **Eligibility.** `radar/eligibility.py` labels each job `finland`, `europe`, `worldwide`, `eu_country`,
    `us_only`, `other_region` or `unclear`, from the location text first and from phrases in the description
@@ -34,7 +35,6 @@ collect  ->  match role  ->  where can it be done from?  ->  score  ->  dedupe  
 
 ## Set up (once)
 
-0. **Add the schedule:** move `setup/daily.yml` to `.github/workflows/daily.yml` and push.
 1. **Run it:** Actions tab -> *Daily job radar* -> *Run workflow*. After that it runs by itself every morning.
 2. **Turn on the dashboard:** Settings -> Pages -> *Deploy from a branch* -> branch `main`, folder `/docs`.
    The dashboard appears at `https://<your-user>.github.io/remote-job-radar/`.
@@ -65,6 +65,21 @@ python -m radar run --sources ashby --limit-boards 20     # first 20 Ashby board
 python -m http.server -d docs                             # dashboard at http://localhost:8000
 ```
 
+## Finnish and European portals
+
+| Portal | How it is covered | Why |
+|---|---|---|
+| Jobicy, Arbeitnow, Working Nomads | Collected daily | Free public APIs that allow reuse with a link back |
+| Finnish and Nordic employers' own career pages | Collected daily | Public job-board APIs |
+| Duunitori | Search link on the dashboard | Its `robots.txt` disallows automated access |
+| Oikotie, LinkedIn | Search link on the dashboard | No public feed; automated collection is against their terms |
+| Työmarkkinatori (Job Market Finland) | Search link for now | Has an official free interface, but it needs an activation form with a business ID. Once you have credentials it can be added as a collected source. |
+
+The search links are set in `portal_searches` in `config.yaml`; each role's `search` term fills the `{q}` placeholder.
+
+Postings written in Finnish or German are tagged and lose `language_penalty` points, since they usually need
+that language. Finnish job titles (ohjelmistokehittäjä, tekoäly...) are matched to roles.
+
 ## Limits
 
 - Eligibility is rule-based. `unclear` means the posting does not say where you can work from; many of those
@@ -78,7 +93,7 @@ python -m http.server -d docs                             # dashboard at http://
 
 Only public, documented job-board endpoints and feeds. The collector identifies itself, runs once a day, uses
 8 concurrent requests and backs off when rate-limited. Jobs only, never people. Remote OK, Remotive and
-Himalayas ask for a link back when their listings are shown; every job links to its original posting.
+Himalayas, Jobicy and Arbeitnow ask for a link back when their listings are shown; every job links to its original posting.
 
 ## Credit
 

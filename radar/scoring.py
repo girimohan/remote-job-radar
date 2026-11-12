@@ -4,6 +4,7 @@ from __future__ import annotations
 import datetime as dt
 import re
 
+from . import language
 from .models import Job
 from .text import first_keyword, has_keyword
 
@@ -84,6 +85,12 @@ def score(job: Job, cfg: dict, today: dt.date | None = None) -> None:
                 total += 2
         except ValueError:
             pass
+
+    if not job.language:
+        job.language = language.detect(job.title, job.description)
+    if job.language != "en":
+        total -= cfg.get("language_penalty", 15)
+        reasons.append({"fi": "posting is in Finnish", "de": "posting is in German"}.get(job.language, "posting is not in English"))
 
     job.score = max(0, min(100, round(total)))
     job.reasons = reasons

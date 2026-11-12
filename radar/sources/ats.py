@@ -1,8 +1,9 @@
-"""Company career pages hosted on Greenhouse, Lever and Ashby (public, documented job-board APIs)."""
+"""Company career pages hosted on Greenhouse, Lever, Ashby and SmartRecruiters (public, documented job-board APIs)."""
 from __future__ import annotations
 
 import concurrent.futures as cf
 import datetime as dt
+import re
 
 from ..http import FetchError, get
 from ..models import Job
@@ -74,10 +75,31 @@ def parse_ashby(slug: str, data: dict) -> list[Job]:
     return out
 
 
+def parse_smartrecruiters(slug: str, data: dict) -> list[Job]:
+    out = []
+    for j in data.get("content") or []:
+        loc = j.get("location") or {}
+        company = j.get("company") or {}
+        ident = company.get("identifier") or slug
+        mode = "hybrid" if loc.get("hybrid") else ""
+        code = ((j.get("language") or {}).get("code") or "")[:2].lower()   # no description in this API, so trust its tag
+        out.append(Job(
+            source="smartrecruiters", source_id=f"{slug}:{j.get('id')}", company=company.get("name") or slug,
+            title=(j.get("name") or "").strip(), url=f"https://jobs.smartrecruiters.com/{ident}/{j.get('id')}",
+            location=re.sub(r"(,\s*)+", ", ", loc.get("fullLocation") or ", ".join(filter(None, [loc.get("city"), loc.get("country")]))),
+            remote=True if loc.get("remote") else None, posted=(j.get("releasedDate") or "")[:10],
+            employment_type=" ".join(filter(None, [(j.get("typeOfEmployment") or {}).get("label"), mode])),
+            language={"en": "en", "fi": "fi", "de": "de"}.get(code, "other") if code else "",
+        ))
+    return out
+
+
 ATS = {
     "greenhouse": ("https://boards-api.greenhouse.io/v1/boards/{slug}/jobs?content=true", parse_greenhouse),
     "lever": ("https://api.lever.co/v0/postings/{slug}?mode=json", parse_lever),
     "ashby": ("https://api.ashbyhq.com/posting-api/job-board/{slug}?includeCompensation=true", parse_ashby),
+    # Large employers post thousands of jobs worldwide; we ask only for their Finland postings.
+    "smartrecruiters": ("https://api.smartrecruiters.com/v1/companies/{slug}/postings?country=fi&limit=100", parse_smartrecruiters),
 }
 
 

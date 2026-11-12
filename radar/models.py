@@ -20,6 +20,7 @@ class Job:
     salary: str = ""
     restrictions: list[str] | None = None   # explicit country list (Himalayas); [] means none
     match_full_text: bool = False      # match roles on title + description (HN posts have no clean title)
+    default_label: str = ""            # eligibility to use when a remote job names a place we do not recognise
 
     # filled in by the pipeline
     eligibility: str = ""
@@ -29,6 +30,8 @@ class Job:
     score: int = 0
     reasons: list[str] = field(default_factory=list)
     first_seen: str = ""
+    language: str = ""                 # en, fi, de or other
+    variants: int = 1                  # same job posted for this many locations
 
     @property
     def uid(self) -> str:
@@ -38,6 +41,6 @@ class Job:
         d = asdict(self)
         d["id"] = self.uid
         d["snippet"] = self.description[:420]
-        for k in ("description", "restrictions", "match_full_text", "source_id"):
+        for k in ("description", "restrictions", "match_full_text", "source_id", "default_label"):
             d.pop(k)
         return d

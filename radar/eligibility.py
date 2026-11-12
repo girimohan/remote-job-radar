@@ -143,12 +143,37 @@ def _from_description(desc: str) -> tuple[str, str] | None:
     return None
 
 
+def names_place(text: str) -> bool:
+    """True when the text mentions a country, region or city we know."""
+    return any(p.search(text) for p in (FINLAND, EUROPE, EU_COUNTRY, EU_CITY, US_EXPLICIT, US_STATE_CODE, US_PLACE,
+                                        OTHER_REGION, WORLDWIDE))
+
+
+def _from_title(title: str) -> tuple[str, str] | None:
+    """Place names in a title. "Global"/"International" are skipped: in titles they describe the job, not the place."""
+    reason = f'title "{title[:60]}"'
+    if FINLAND.search(title):
+        return "finland", reason
+    if EUROPE.search(title) or re.search(r"\b(EU|EMEA)\b", title):
+        return "europe", reason
+    if US_EXPLICIT.search(title):
+        return "us_only", reason
+    if EU_COUNTRY.search(title) or EU_CITY.search(title):
+        return "eu_country", reason
+    if re.search(r"\b(LATAM|APAC|Canada|India|Brazil|Mexico|Australia|Philippines|Japan|Singapore|Argentina|Colombia)\b", title):
+        return "other_region", reason
+    return None
+
+
 def classify(job: Job) -> tuple[str, str]:
     """Return (label, human-readable reason)."""
     loc = job.location or ""
     desc = job.description or ""
 
     if FINLAND.search(loc):
+        # Finland as one entry in a long list of countries means "remote across Europe", not a Finland job.
+        if is_remote(job) and len(set(m.lower() for m in EU_COUNTRY.findall(loc))) >= 3:
+            return "europe", f'Finland is one of several countries listed: "{loc[:60]}"'
         return "finland", f'location "{loc[:60]}"'
     if not is_remote(job):
         return "not_remote", "not marked remote"
@@ -188,7 +213,16 @@ def classify(job: Job) -> tuple[str, str]:
     # Free-text headers (Hacker News) carry the company and role too, so leftover words mean nothing there.
     leftover = None if job.match_full_text else _WORD.search(_NEUTRAL.sub(" ", loc))
     if leftover:
+        if job.default_label:
+            return job.default_label, f'location "{loc[:60]}" on a Europe-focused board'
         return "other_region", f'location "{loc[:60]}" names a place outside Europe'
+
+    # Location is bare ("Remote") or empty. Some employers put the place in the title instead
+    # ("Software Engineer - Helsinki, Finland", "Senior Engineer LATAM").
+    if not job.match_full_text:
+        hit = _from_title(job.title or "")
+        if hit:
+            return hit
 
     # Location is bare ("Remote") or empty: the description is all we have.
     hit = _from_description(desc)

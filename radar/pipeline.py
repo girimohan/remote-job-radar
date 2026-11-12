@@ -11,8 +11,9 @@ from .models import Job
 from .sources import SourceResult, ats, boards, hackernews
 
 ELIG_RANK = {"europe": 0, "finland": 1, "worldwide": 2, "unclear": 3, "eu_country": 4}
-SOURCE_RANK = {"greenhouse": 0, "lever": 0, "ashby": 0, "hackernews": 1, "himalayas": 2, "remotive": 2,
-               "weworkremotely": 2, "remoteok": 3}
+SOURCE_RANK = {"greenhouse": 0, "lever": 0, "ashby": 0, "smartrecruiters": 0, "hackernews": 1, "himalayas": 2,
+               "remotive": 2, "weworkremotely": 2, "jobicy": 2, "arbeitnow": 2, "workingnomads": 2, "remoteok": 3}
+_SUFFIX = re.compile(r"\s+[-–—|]\s+[^-–—|]+$|\s*\([^()]+\)\s*$")
 _NORM = re.compile(r"[^a-z0-9]+")
 
 
@@ -23,7 +24,7 @@ def collect(cfg: dict, companies: dict, only: set[str] | None = None, limit_boar
         return src.get(name, {}).get("enabled", True) and (only is None or name in only)
 
     results: list[SourceResult] = []
-    for name in ("greenhouse", "lever", "ashby"):
+    for name in ("greenhouse", "lever", "ashby", "smartrecruiters"):
         if on(name):
             results.append(ats.fetch(name, companies.get(name, []), limit_boards))
     if on("himalayas"):
@@ -34,6 +35,12 @@ def collect(cfg: dict, companies: dict, only: set[str] | None = None, limit_boar
         results.append(boards.fetch_remotive())
     if on("weworkremotely"):
         results.append(boards.fetch_wwr())
+    if on("jobicy"):
+        results.append(boards.fetch_jobicy(src.get("jobicy", {}).get("regions", ["europe", "emea", "anywhere"])))
+    if on("arbeitnow"):
+        results.append(boards.fetch_arbeitnow(max_pages=src.get("arbeitnow", {}).get("max_pages", 5)))
+    if on("workingnomads"):
+        results.append(boards.fetch_workingnomads())
     if on("hackernews"):
         results.append(hackernews.fetch())
     return results
@@ -84,9 +91,36 @@ def process(jobs: list[Job], cfg: dict, today: dt.date) -> tuple[list[Job], dict
             cur_rank = (ELIG_RANK.get(cur.eligibility, 9), SOURCE_RANK.get(cur.source, 9), -cur.score)
             if rank < cur_rank:
                 best[k] = job
-    kept = sorted(best.values(), key=lambda j: (-j.score, j.company.lower(), j.title.lower()))
+    survivors = collapse_variants(list(best.values()), funnel)
+    kept = sorted(survivors, key=lambda j: (-j.score, j.company.lower(), j.title.lower()))
     funnel["matched"] = len(kept)
     return kept, funnel
+
+
+def collapse_variants(jobs: list[Job], funnel: dict, threshold: int = 3) -> list[Job]:
+    """One job posted separately for many cities ("Engineer - Austin", "Engineer - Berlin", ...) is one job.
+
+    When a company has `threshold` or more postings that differ only in a trailing "- place" or "(place)",
+    keep the one that suits you best and record how many there were. Suffixes that are not places
+    ("- Payments", "- Growth") are different jobs and are left alone.
+    """
+    groups: dict[tuple, list[Job]] = {}
+    for j in jobs:
+        m = _SUFFIX.search(j.title)
+        base = j.title[:m.start()] if m and eligibility.names_place(m.group(0)) else j.title
+        groups.setdefault((_NORM.sub(" ", j.company.lower()).strip(), _NORM.sub(" ", base.lower()).strip()), []).append(j)
+    out = []
+    for members in groups.values():
+        if len(members) < threshold:
+            out.extend(members)
+            continue
+        members.sort(key=lambda j: (ELIG_RANK.get(j.eligibility, 9), -j.score))
+        top = members[0]
+        top.variants = len(members)
+        top.reasons.append(f"posted for {len(members)} locations")
+        funnel["duplicate"] += len(members) - 1
+        out.append(top)
+    return out
 
 
 def merge_first_seen(kept: list[Job], ledger: dict, today: dt.date, keep_days: int = 180) -> int:
@@ -141,6 +175,8 @@ def run(cfg: dict, companies: dict, out_path: Path, today: dt.date | None = None
         "sources": [{"name": r.name, "ok": r.ok, "fetched": len(r.jobs), "matched": kept_by_source.get(r.name, 0),
                      "detail": r.detail, "error": r.error} for r in results],
         "roles": [r["name"] for r in cfg["roles"]],
+        "role_searches": {r["name"]: r.get("search", r["name"]) for r in cfg["roles"]},
+        "portals": cfg.get("portal_searches", []),
         "jobs": [j.to_public() for j in kept],
     }
     out_path.parent.mkdir(parents=True, exist_ok=True)

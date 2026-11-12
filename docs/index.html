@@ -87,6 +87,10 @@ ol.jobs>li{border-bottom:1px solid var(--line)}
 .btn.primary{background:var(--pine);border-color:var(--pine);color:var(--paper)}
 .more select{padding:7px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
 .more textarea{width:100%;max-width:72ch;min-height:58px;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--panel);resize:vertical}
+#portalBox h2{margin-top:18px}
+.hint{color:var(--muted);font-size:13px;margin:0 8px 6px}
+#portals a{display:block;padding:4px 8px;border-radius:5px;text-decoration:none}
+#portals a:hover{background:var(--slate-soft)}
 .empty{padding:36px 4px;color:var(--muted);max-width:60ch}
 .showmore{margin:16px 0}
 
@@ -136,7 +140,13 @@ ol.jobs>li{border-bottom:1px solid var(--line)}
           <div id="levels"></div>
           <h2>Show</h2>
           <label class="chk"><input type="checkbox" id="onlyNew"> <span>Only jobs first seen today</span></label>
+          <label class="chk"><input type="checkbox" id="onlyEnglish"> <span>Only postings written in English</span></label>
           <label class="chk"><input type="checkbox" id="hideDone" checked> <span>Hide jobs I marked “Not for me”</span></label>
+          <div id="portalBox" hidden>
+            <h2>Search other portals</h2>
+            <p class="hint" id="portalHint"></p>
+            <div id="portals"></div>
+          </div>
         </div>
       </details>
     </aside>
@@ -184,8 +194,23 @@ ol.jobs>li{border-bottom:1px solid var(--line)}
       <li><b>Check the posting</b>: it is remote but does not say from where. Many of these turn out to be US-only.</li>
       <li><b>One European country</b>: remote, but tied to a country such as the UK or Germany. Usually needs residence there; worth asking only when the fit is very strong.</li>
     </ul>
+    <h2>Finnish and other portals</h2>
+    <p>Duunitori, Oikotie and LinkedIn do not allow automated collection, and Työmarkkinatori needs a registered
+    account for its interface. For those, the Jobs tab has a “Search other portals” list: pick a role on the left
+    and each link opens that portal already searching for it.</p>
+    <p>Postings written in Finnish or German are tagged and scored lower, because they usually need that language.</p>
     <h2>Change what you see</h2>
     <p>Roles, keywords, skills and the score cut-off live in <code>config.yaml</code> in the repository. Edit it there and the next daily run uses it.</p>
+    <h2>Where the jobs come from</h2>
+    <p>Company career pages on Greenhouse, Lever, Ashby and SmartRecruiters, and listings from
+    <a href="https://himalayas.app" target="_blank" rel="noopener">Himalayas</a>,
+    <a href="https://remoteok.com" target="_blank" rel="noopener">Remote OK</a>,
+    <a href="https://remotive.com" target="_blank" rel="noopener">Remotive</a>,
+    <a href="https://weworkremotely.com" target="_blank" rel="noopener">We Work Remotely</a>,
+    <a href="https://jobicy.com" target="_blank" rel="noopener">Jobicy</a>,
+    <a href="https://www.arbeitnow.com" target="_blank" rel="noopener">Arbeitnow</a>,
+    <a href="https://www.workingnomads.com" target="_blank" rel="noopener">Working Nomads</a> and the Hacker News
+    “Who is hiring?” thread. Every job links to its original posting.</p>
     <h2>Source health</h2>
     <div class="health" id="health"></div>
   </section>
@@ -194,6 +219,7 @@ ol.jobs>li{border-bottom:1px solid var(--line)}
 <script>
 const ELIG = {europe:["Europe","ok"], finland:["Finland","ok"], worldwide:["Worldwide","ok"],
               unclear:["Check the posting","check"], eu_country:["One European country",""]};
+const LANG = {fi:"In Finnish", de:"In German", other:"Not in English"};
 const LEVEL = {junior:"Junior", mid:"Mid / not stated", senior:"Senior", staff:"Staff or lead"};
 const STATUS = ["Not started","Saved","Applied","Interview","Offer","Rejected","Not for me"];
 const KEY = "remote-job-radar.tracker.v1";
@@ -203,7 +229,7 @@ const fmt = n => Number(n || 0).toLocaleString("en");
 
 let data = null, tracker = {}, open = new Set(), limit = 100;
 const f = {role:null, elig:new Set(["europe","finland","worldwide","unclear"]), level:new Set(["junior","mid","senior"]),
-           q:"", sort:"score", onlyNew:false, hideDone:true};
+           q:"", sort:"score", onlyNew:false, onlyEnglish:false, hideDone:true};
 
 try { tracker = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch { tracker = {}; }
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(tracker)); } catch {} }
@@ -222,6 +248,7 @@ function visible(){
   let rows = data.jobs.filter(j =>
     (!f.role || j.role === f.role) && f.elig.has(j.eligibility) && f.level.has(j.level) &&
     (!f.onlyNew || j.first_seen === data.date) && (!f.hideDone || statusOf(j) !== "Not for me") &&
+    (!f.onlyEnglish || (j.language || "en") === "en") &&
     (!q || (j.title+" "+j.company+" "+j.snippet+" "+j.reasons.join(" ")).toLowerCase().includes(q)));
   if (f.sort === "new") rows.sort((a,b) => (b.posted||"").localeCompare(a.posted||"") || b.score-a.score);
   else if (f.sort === "company") rows.sort((a,b) => a.company.localeCompare(b.company) || b.score-a.score);
@@ -239,7 +266,8 @@ function renderFilters(){
   // Counts respect the other filters, so each number is what you would see after clicking.
   const base = (skip) => data.jobs.filter(j =>
     (skip==="role" || !f.role || j.role===f.role) && (skip==="elig" || f.elig.has(j.eligibility)) &&
-    (skip==="level" || f.level.has(j.level)) && (!f.hideDone || statusOf(j)!=="Not for me"));
+    (skip==="level" || f.level.has(j.level)) && (!f.hideDone || statusOf(j)!=="Not for me") &&
+    (!f.onlyEnglish || (j.language || "en") === "en"));
   const count = (rows, key) => rows.reduce((m,j) => (m[j[key]] = (m[j[key]]||0)+1, m), {});
   const r = count(base("role"), "role");
   picks($("roles"), [["", "All roles", base("role").length], ...data.roles.map(n => [n, n, r[n]||0])],
@@ -276,7 +304,9 @@ function rowHtml(j){
         <span class="meta" style="display:block">${meta}</span>
         <span class="tags">${j.first_seen===data.date && !data.first_run ? '<span class="tag new">New today</span>':''}
           <span class="tag ${ecls}">${esc(elabel)}</span><span class="tag">${esc(j.role)}</span>
-          ${j.level!=="mid" ? `<span class="tag">${esc(LEVEL[j.level])}</span>`:''}</span></span>
+          ${j.level!=="mid" ? `<span class="tag">${esc(LEVEL[j.level])}</span>`:''}
+          ${LANG[j.language] ? `<span class="tag check">${LANG[j.language]}</span>`:''}
+          ${j.variants>1 ? `<span class="tag">${j.variants} locations</span>`:''}</span></span>
       <span class="state ${st!=="Not started"?"on":""}">${st!=="Not started"?esc(st):""}</span>
     </button>
     ${isOpen ? `<div class="more">
@@ -292,8 +322,20 @@ function rowHtml(j){
   </li>`;
 }
 
+function renderPortals(){
+  // Portals that do not allow automated collection: link to a ready-made search for the selected role instead.
+  const portals = data.portals || [];
+  $("portalBox").hidden = !portals.length;
+  if (!portals.length) return;
+  const term = (f.role && (data.role_searches || {})[f.role]) || "software developer";
+  $("portalHint").textContent = `Opens a search for “${term}” on each site.`;
+  $("portals").innerHTML = portals.map(p =>
+    `<a href="${esc(p.url.replace("{q}", encodeURIComponent(term)))}" target="_blank" rel="noopener">${esc(p.name)}</a>`).join("");
+}
+
 function render(){
   renderFilters();
+  renderPortals();
   const rows = visible(), shown = rows.slice(0, limit), byId = Object.fromEntries(data.jobs.map(j => [j.id, j]));
   $("count").textContent = rows.length ? `${fmt(rows.length)} jobs match these filters` : "";
   $("list").innerHTML = shown.map(rowHtml).join("") ||
@@ -343,6 +385,7 @@ document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => {
 $("q").oninput = e => { f.q = e.target.value; limit = 100; render(); };
 $("sort").onchange = e => { f.sort = e.target.value; render(); };
 $("onlyNew").onchange = e => { f.onlyNew = e.target.checked; limit = 100; render(); };
+$("onlyEnglish").onchange = e => { f.onlyEnglish = e.target.checked; limit = 100; render(); };
 $("hideDone").onchange = e => { f.hideDone = e.target.checked; render(); };
 $("showMore").onclick = () => { limit += 100; render(); };
 $("export").onclick = () => {

@@ -29,32 +29,39 @@ profile:
 # job title wins. "weight" (0-1) says how much you want that role.
 roles:
   - name: AI Trainer / Evaluator
+    search: AI trainer
     weight: 0.7
     title_any: [ai trainer, freelance ai trainer, ai tutor, ai evaluator, llm evaluator, model evaluator, data annotation, data annotator,
                 ai training, code reviewer, ai data, rater]
   - name: AI / LLM Engineer
+    search: AI engineer
     weight: 1.0
-    title_any: [ai engineer, llm, generative ai, genai, gen ai, applied ai, ai agent, agent engineer, agentic,
+    title_any: [tekoäly, tekoälykehittäjä, tekoälyasiantuntija, tekoälyinsinööri, ki-entwickler, ai engineer, llm, generative ai, genai, gen ai, applied ai, ai agent, agent engineer, agentic,
                 rag, ai developer, ai software engineer, ai product engineer, ai backend, ai platform, ai/ml, ai & ml,
                 ai application, ai research engineer, conversational ai, nlp engineer]
   - name: ML Engineer / MLOps
+    search: machine learning engineer
     weight: 0.95
-    title_any: [machine learning engineer, ml engineer, mlops, ml ops, ml platform, machine learning, ml infrastructure,
+    title_any: [koneoppimisinsinööri, koneoppimisasiantuntija, koneoppiminen, machine learning engineer, ml engineer, mlops, ml ops, ml platform, machine learning, ml infrastructure,
                 applied scientist, research engineer, ml developer]
   - name: Forward Deployed / Solutions Engineer
+    search: solutions engineer
     weight: 0.8
     title_any: [forward deployed, solutions engineer, solution engineer, automation engineer, ai solutions,
                 implementation engineer, integration engineer, customer engineer, ai consultant, ai automation]
   - name: Backend Engineer
+    search: backend developer
     weight: 0.85
-    title_any: [backend, back-end, back end, python developer, python engineer, api engineer, platform engineer,
+    title_any: [ohjelmistokehittäjä, sovelluskehittäjä, ohjelmistosuunnittelija, backend-kehittäjä, ohjelmoija, softwareentwickler, backend, back-end, back end, python developer, python engineer, api engineer, platform engineer,
                 software engineer, software developer]
   - name: Full-Stack Engineer
+    search: full stack developer
     weight: 0.8
-    title_any: [full stack, full-stack, fullstack, product engineer, web developer, next.js, react developer]
+    title_any: [full stack -kehittäjä, web-kehittäjä, fullstack-kehittäjä, full stack, full-stack, fullstack, product engineer, web developer, next.js, react developer]
   - name: Data Engineer
+    search: data engineer
     weight: 0.7
-    title_any: [data engineer, analytics engineer, data platform]
+    title_any: [data-insinööri, datainsinööri, data engineer, analytics engineer, data platform]
 
 # A job whose title contains any of these is dropped, whatever the role match.
 exclude_title: [director, vp, vice president, head of, engineering manager, manager, recruiter, account executive,
@@ -78,6 +85,9 @@ keep_eligibility: [finland, europe, worldwide, unclear, eu_country]
 
 min_score: 35
 
+# Points taken off when a posting is written in Finnish, German or another non-English language.
+language_penalty: 15
+
 # Company names containing any of these are treated as agencies/aggregators and dropped.
 agency_blocklist: [jobgether, jobs for humanity, staffing, recruitment agency, talent solutions,
                    crossing hurdles, it consulting services, virtualvocations, bjak, 10xteam]
@@ -91,3 +101,16 @@ sources:
   remotive: {enabled: true}
   weworkremotely: {enabled: true}
   hackernews: {enabled: true}
+  smartrecruiters: {enabled: true}          # large employers; only their Finland postings are requested
+  jobicy: {enabled: true, regions: [europe, emea, anywhere]}
+  workingnomads: {enabled: true}
+  arbeitnow: {enabled: true, max_pages: 5}  # European (mostly German) employers, 300 listings per page
+
+# Portals that do not allow automated collection (or need a partner agreement). The dashboard
+# links to a ready-made search on each one instead. {q} is replaced by the role's "search" term.
+portal_searches:
+  - {name: Duunitori, url: "https://duunitori.fi/tyopaikat?haku={q}"}
+  - {name: Oikotie Työpaikat, url: "https://tyopaikat.oikotie.fi/tyopaikat?hakusana={q}"}
+  - {name: Työmarkkinatori, url: "https://tyomarkkinatori.fi/henkiloasiakkaat/avoimet-tyopaikat?q={q}"}
+  - {name: "LinkedIn, Finland", url: "https://www.linkedin.com/jobs/search/?keywords={q}&location=Finland"}
+  - {name: "LinkedIn, remote in the EU", url: "https://www.linkedin.com/jobs/search/?keywords={q}&location=European%20Union&f_WT=2"}

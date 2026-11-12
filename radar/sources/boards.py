@@ -1,7 +1,9 @@
-"""Remote-only job boards with free public feeds: Himalayas, Remote OK, Remotive, We Work Remotely."""
+"""Job boards with free public feeds: Himalayas, Remote OK, Remotive, We Work Remotely, Jobicy, Arbeitnow, Working Nomads."""
 from __future__ import annotations
 
 import datetime as dt
+import html
+import re
 import time
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
@@ -159,4 +161,101 @@ def fetch_wwr() -> SourceResult:
         res.jobs = parse_wwr(text or "<rss/>")
     except (FetchError, ET.ParseError) as e:
         res.ok, res.error = False, str(e) or type(e).__name__
+    return res
+
+
+# ---------------------------------------------------------------- Jobicy
+def parse_jobicy(data: dict) -> list[Job]:
+    out = []
+    for j in data.get("jobs") or []:
+        types = j.get("jobType") or []
+        out.append(Job(
+            source="jobicy", source_id=str(j.get("id")), company=j.get("companyName") or "",
+            title=html.unescape((j.get("jobTitle") or "").strip()), url=j.get("url") or "",
+            location=re.sub(r"\s+", " ", j.get("jobGeo") or ""), remote=True, posted=(j.get("pubDate") or "")[:10],
+            description=strip_html(j.get("jobDescription") or j.get("jobExcerpt"))[:20000],
+            employment_type=", ".join(types) if isinstance(types, list) else str(types),
+            salary=_money(j.get("salaryMin"), j.get("salaryMax"), j.get("salaryCurrency") or ""),
+        ))
+    return out
+
+
+def fetch_jobicy(regions: list[str]) -> SourceResult:
+    """Remote jobs by region. Jobicy asks for at most one polling round an hour; we do one a day."""
+    res = SourceResult(name="jobicy")
+    seen: set[str] = set()
+    errors = []
+    for geo in regions:
+        try:
+            for job in parse_jobicy(get(f"https://jobicy.com/api/v2/remote-jobs?count=100&geo={quote(geo)}") or {}):
+                if job.source_id not in seen:
+                    seen.add(job.source_id)
+                    res.jobs.append(job)
+        except FetchError as e:
+            errors.append(str(e))
+        time.sleep(1)
+    if errors and not res.jobs:
+        res.ok, res.error = False, errors[0]
+    res.detail = "regions: " + ", ".join(regions) + (f"; {len(errors)} region request(s) failed" if errors else "")
+    return res
+
+
+# ---------------------------------------------------------------- Arbeitnow
+def parse_arbeitnow(data: dict) -> list[Job]:
+    out = []
+    for j in data.get("data") or []:
+        out.append(Job(
+            source="arbeitnow", source_id=str(j.get("slug")), company=j.get("company_name") or "",
+            title=(j.get("title") or "").strip(), url=j.get("url") or "", location=j.get("location") or "",
+            remote=True if j.get("remote") else None, posted=_epoch_date(j.get("created_at")),
+            description=strip_html(j.get("description"))[:20000],
+            employment_type=", ".join(j.get("job_types") or []),
+            default_label="eu_country",   # the board lists European (mostly German) employers by city name
+        ))
+    return out
+
+
+def fetch_arbeitnow(max_pages: int = 5) -> SourceResult:
+    res = SourceResult(name="arbeitnow")
+    url = "https://www.arbeitnow.com/api/job-board-api"
+    pages = 0
+    try:
+        for _ in range(max_pages):
+            data = get(url) or {}
+            batch = parse_arbeitnow(data)
+            if not batch:
+                break
+            res.jobs.extend(batch)
+            pages += 1
+            url = (data.get("links") or {}).get("next")
+            if not url:
+                break
+            time.sleep(1)
+    except FetchError as e:
+        if not res.jobs:
+            res.ok, res.error = False, str(e)
+    res.detail = f"newest {len(res.jobs):,} listings ({pages} pages)"
+    return res
+
+
+# ---------------------------------------------------------------- Working Nomads
+def parse_workingnomads(data: list) -> list[Job]:
+    out = []
+    for j in data if isinstance(data, list) else []:
+        url = j.get("url") or ""
+        out.append(Job(
+            source="workingnomads", source_id=url, company=j.get("company_name") or "",
+            title=(j.get("title") or "").strip(), url=url, location=j.get("location") or "", remote=True,
+            posted=(j.get("pub_date") or "")[:10],
+            description=(strip_html(j.get("description")) + " " + (j.get("tags") or "").replace(",", " "))[:20000],
+        ))
+    return out
+
+
+def fetch_workingnomads() -> SourceResult:
+    res = SourceResult(name="workingnomads")
+    try:
+        res.jobs = parse_workingnomads(get("https://www.workingnomads.com/api/exposed_jobs/") or [])
+    except FetchError as e:
+        res.ok, res.error = False, str(e)
     return res
