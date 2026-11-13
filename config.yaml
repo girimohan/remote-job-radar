@@ -85,6 +85,21 @@ keep_eligibility: [finland, europe, worldwide, unclear, eu_country]
 
 min_score: 35
 
+# An LLM (Claude) re-reads every job the rules kept: where it can be done from, contract or employee,
+# required languages, years of experience. Needs ANTHROPIC_API_KEY (a GitHub secret for the daily run);
+# without it the radar runs on rules alone. Answers are cached in data/llm_cache.json, so each posting
+# is read once. At Haiku 5.5 prices reading ~1,500 jobs costs about $0.50 in total, then cents a day.
+# The per-run cap keeps each run inside new API accounts' rate limits; the backlog clears over a few days.
+llm:
+  enabled: true
+  model: claude-haiku-5-5
+  max_calls_per_run: 400
+  workers: 4
+
+# `python -m radar tailor` (on your computer) writes CV text with this model.
+tailor:
+  model: claude-sonnet-5-5
+
 # Points taken off when a posting is written in Finnish, German or another non-English language.
 language_penalty: 15
 

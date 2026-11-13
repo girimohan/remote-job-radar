@@ -3,3 +3,8 @@ __pycache__/
 .venv/
 .pytest_cache/
 .env
+# Your CV and tailored output stay on your computer
+private/
+tailored/
+cv.*
+*.cv.*

@@ -32,6 +32,13 @@ class Job:
     first_seen: str = ""
     language: str = ""                 # en, fi, de or other
     variants: int = 1                  # same job posted for this many locations
+    # filled in when an LLM has read the posting (radar/llm.py)
+    llm_status: str = ""               # "checked" (evidence verified), "unverified", or "" (not read)
+    llm_summary: str = ""
+    rule_eligibility: str = ""         # what the rules said, kept for comparison
+    llm_employment: str = ""
+    llm_languages: list[str] = field(default_factory=list)
+    llm_min_years: int = -1
 
     @property
     def uid(self) -> str:

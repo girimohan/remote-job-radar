@@ -6,7 +6,7 @@ import json
 import re
 from pathlib import Path
 
-from . import eligibility, scoring
+from . import eligibility, llm, scoring
 from .models import Job
 from .sources import SourceResult, ats, boards, hackernews
 
@@ -123,6 +123,28 @@ def collapse_variants(jobs: list[Job], funnel: dict, threshold: int = 3) -> list
     return out
 
 
+def llm_stage(kept: list[Job], cfg: dict, reader: "llm.Reader", today: dt.date, funnel: dict) -> list[Job]:
+    """Let the LLM re-read every rule-approved job, then re-score and drop the ones it shows are not open to you."""
+    keep_labels = set(cfg.get("keep_eligibility", ELIG_RANK))
+    min_score = cfg.get("min_score", 0)
+    funnel["llm_dropped"] = 0
+    out = []
+    for job, res in zip(kept, reader.read_all(kept, today.isoformat())):
+        if res:
+            llm.apply(job, res)
+            scoring.score(job, cfg, today)
+            if job.eligibility not in keep_labels:
+                funnel["llm_dropped"] += 1
+                continue
+            if job.score < min_score:
+                funnel["low_score"] += 1
+                continue
+        out.append(job)
+    out.sort(key=lambda j: (-j.score, j.company.lower(), j.title.lower()))
+    funnel["matched"] = len(out)
+    return out
+
+
 def merge_first_seen(kept: list[Job], ledger: dict, today: dt.date, keep_days: int = 180) -> int:
     """Stamp each job with the day it was first seen, using a ledger that survives between runs.
 
@@ -145,7 +167,8 @@ def merge_first_seen(kept: list[Job], ledger: dict, today: dt.date, keep_days: i
 
 
 def run(cfg: dict, companies: dict, out_path: Path, today: dt.date | None = None,
-        only: set[str] | None = None, limit_boards: int | None = None, ledger_path: Path | None = None) -> dict:
+        only: set[str] | None = None, limit_boards: int | None = None, ledger_path: Path | None = None,
+        reader: "llm.Reader | None" = None, llm_cache_path: Path | None = None) -> dict:
     today = today or dt.date.today()
     ledger_path = ledger_path or out_path.with_name("seen.json")
     results = collect(cfg, companies, only, limit_boards)
@@ -153,6 +176,18 @@ def run(cfg: dict, companies: dict, out_path: Path, today: dt.date | None = None
         raise RuntimeError("every source failed: " + "; ".join(f"{r.name}: {r.error}" for r in results))
     all_jobs = [j for r in results for j in r.jobs]
     kept, funnel = process(all_jobs, cfg, today)
+
+    llm_info = {"enabled": False}
+    lcfg = cfg.get("llm", {})
+    if reader is None and lcfg.get("enabled", True):
+        reader = llm.Reader(model=lcfg.get("model", llm.DEFAULT_MODEL), max_calls=lcfg.get("max_calls_per_run", 600),
+                            workers=lcfg.get("workers", 4), cache_path=llm_cache_path or ledger_path.with_name("llm_cache.json"))
+    if reader is not None and reader.enabled:
+        kept = llm_stage(kept, cfg, reader, today, funnel)
+        reader.save(today)
+        read = sum(1 for j in kept if j.llm_status)
+        llm_info = {"enabled": True, "model": reader.model, **reader.usage.as_dict(),
+                    "not_read_yet": len(kept) - read}
 
     ledger: dict = {}
     if ledger_path.exists():
@@ -172,6 +207,7 @@ def run(cfg: dict, companies: dict, out_path: Path, today: dt.date | None = None
         "new_today": new_today,
         "first_run": first_run,
         "funnel": funnel,
+        "llm": llm_info,
         "sources": [{"name": r.name, "ok": r.ok, "fetched": len(r.jobs), "matched": kept_by_source.get(r.name, 0),
                      "detail": r.detail, "error": r.error} for r in results],
         "roles": [r["name"] for r in cfg["roles"]],

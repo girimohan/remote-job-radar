@@ -62,7 +62,7 @@ def score(job: Job, cfg: dict, today: dt.date | None = None) -> None:
     elif job.level in ("senior", "staff"):
         reasons.append(f"{job.level}-level title")
 
-    yrs = years_required(job.description)
+    yrs = job.llm_min_years if job.llm_min_years >= 0 else years_required(job.description)
     if yrs and yrs >= 5:
         total -= 8
         reasons.append(f"asks for {yrs}+ years")
@@ -71,7 +71,8 @@ def score(job: Job, cfg: dict, today: dt.date | None = None) -> None:
 
     total += ELIGIBILITY_POINTS.get(job.eligibility, 0)
 
-    if CONTRACT.search(f"{job.employment_type} {job.title} {job.description[:1500]}"):
+    if job.llm_employment in ("contractor", "either") or (
+            job.llm_employment in ("", "unknown") and CONTRACT.search(f"{job.employment_type} {job.title} {job.description[:1500]}")):
         total += 5
         reasons.append("contract or part-time possible")
 
@@ -91,6 +92,9 @@ def score(job: Job, cfg: dict, today: dt.date | None = None) -> None:
     if job.language != "en":
         total -= cfg.get("language_penalty", 15)
         reasons.append({"fi": "posting is in Finnish", "de": "posting is in German"}.get(job.language, "posting is not in English"))
+    elif job.llm_languages:
+        total -= cfg.get("language_penalty", 15)
+        reasons.append("requires " + " and ".join(job.llm_languages[:2]))
 
     job.score = max(0, min(100, round(total)))
     job.reasons = reasons

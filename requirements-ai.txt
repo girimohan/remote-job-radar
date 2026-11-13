@@ -1,0 +1,5 @@
+# Optional, for `python -m radar tailor` on your own computer
+-r requirements.txt
+fastembed>=0.4      # dense embeddings (ONNX, no PyTorch); without it retrieval uses BM25 only
+pypdf>=4.0          # read a PDF CV
+python-docx>=1.1    # read a .docx CV

@@ -75,6 +75,7 @@ ol.jobs>li{border-bottom:1px solid var(--line)}
 .tag{font-size:12.5px;padding:1px 8px;border-radius:99px;background:var(--slate-soft)}
 .tag.ok{background:var(--pine-soft);color:var(--pine)}
 .tag.check{background:var(--amber-soft);color:var(--amber)}
+.tag.ai{background:transparent;border:1px solid var(--pine);color:var(--pine)}
 .tag.new{background:var(--amber);color:var(--paper);font-weight:600}
 .state{font-size:13px;color:var(--muted);white-space:nowrap;padding-top:4px}
 .state.on{color:var(--pine);font-weight:600}
@@ -194,6 +195,11 @@ ol.jobs>li{border-bottom:1px solid var(--line)}
       <li><b>Check the posting</b>: it is remote but does not say from where. Many of these turn out to be US-only.</li>
       <li><b>One European country</b>: remote, but tied to a country such as the UK or Germany. Usually needs residence there; worth asking only when the fit is very strong.</li>
     </ul>
+    <h2>The AI-checked tag</h2>
+    <p>Rules judge each job from its location field and a few phrases. Then an AI model (Claude) reads the whole
+    posting and says where it can be done from, whether contracts are possible and which languages it needs. It has
+    to quote the sentence it relied on; if that quote is not found word for word in the posting, its answer is
+    thrown away and the rules decide. “AI-checked” means the answer passed that check.</p>
     <h2>Finnish and other portals</h2>
     <p>Duunitori, Oikotie and LinkedIn do not allow automated collection, and Työmarkkinatori needs a registered
     account for its interface. For those, the Jobs tab has a “Search other portals” list: pick a role on the left
@@ -306,10 +312,13 @@ function rowHtml(j){
           <span class="tag ${ecls}">${esc(elabel)}</span><span class="tag">${esc(j.role)}</span>
           ${j.level!=="mid" ? `<span class="tag">${esc(LEVEL[j.level])}</span>`:''}
           ${LANG[j.language] ? `<span class="tag check">${LANG[j.language]}</span>`:''}
-          ${j.variants>1 ? `<span class="tag">${j.variants} locations</span>`:''}</span></span>
+          ${j.variants>1 ? `<span class="tag">${j.variants} locations</span>`:''}
+          ${j.llm_employment==="contractor"||j.llm_employment==="either" ? `<span class="tag ok">Contract possible</span>`:''}
+          ${j.llm_status==="checked" ? `<span class="tag ai" title="An AI read the full posting and quoted where it says this">AI-checked</span>`:''}</span></span>
       <span class="state ${st!=="Not started"?"on":""}">${st!=="Not started"?esc(st):""}</span>
     </button>
     ${isOpen ? `<div class="more">
+      ${j.llm_summary ? `<p><b>In short:</b> ${esc(j.llm_summary)}</p>`:""}
       <p class="why"><b>Where from:</b> ${esc(j.eligibility_reason)}.${j.reasons.length?` <b>Why it matched:</b> ${esc(j.reasons.join("; "))}.`:""} Found on ${esc(j.source)}.</p>
       ${j.snippet ? `<p>${esc(j.snippet)}${j.snippet.length>=420?"…":""}</p>`:""}
       <div class="actions">
@@ -366,15 +375,19 @@ function renderHeader(){
   const fu = data.funnel, when = new Date(data.generated_at);
   const fresh = data.first_run ? `${fmt(fu.matched)} matching jobs found` : `${fmt(data.new_today)} new today, ${fmt(fu.matched)} open in total`;
   $("sub").textContent = `${fresh}. Last checked ${when.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"})}.`;
-  const misc = fu.not_remote + fu.agency + fu.duplicate + fu.low_score;
+  const misc = fu.not_remote + fu.agency + fu.duplicate + fu.low_score + (fu.llm_dropped || 0);
   const seg = [["s-role","not one of your roles",fu.role_mismatch],["s-us","US-only",fu.us_only],["s-other","other regions",fu.other_region],
-               ["s-misc","not remote, agency, duplicate or weak match",misc],["s-match","matches",fu.matched]];
+               ["s-misc", fu.llm_dropped ? "not remote, agency, duplicate, weak match, or ruled out by AI" : "not remote, agency, duplicate or weak match", misc],["s-match","matches",fu.matched]];
   $("sieveBar").innerHTML = seg.map(([c,,n]) => `<span class="${c}" style="flex:${Math.log10(n+1)+0.01}"></span>`).join("");
   $("sieveBar").setAttribute("aria-label", `Of ${fmt(fu.collected)} postings collected: ` + seg.map(([,l,n]) => `${fmt(n)} ${l}`).join(", "));
   $("sieveKey").innerHTML = `<span><b>${fmt(fu.collected)}</b> postings collected</span>` +
     seg.map(([c,l,n]) => `<span><i class="${c}"></i><b>${fmt(n)}</b> ${l}</span>`).join("");
   $("sieve").hidden = false;
-  $("health").innerHTML = data.sources.map(s => `<div>${esc(s.name)}: ${s.ok ? "working" : `<span class="bad">failed (${esc(s.error)})</span>`}, ${fmt(s.fetched)} postings read, ${fmt(s.matched)} matched${s.detail?`. ${esc(s.detail)}`:""}</div>`).join("");
+  const L = data.llm || {};
+  const llmLine = L.enabled
+    ? `<div>AI reading (${esc(L.model)}): ${fmt(L.calls)} postings read this run, ${fmt(L.cached)} from earlier runs, ${fmt(L.unverified)} answers rejected because the quote was not in the posting, ${fmt(fu.llm_dropped||0)} jobs ruled out. Cost this run: $${Number(L.cost_usd||0).toFixed(3)}.${L.not_read_yet?` ${fmt(L.not_read_yet)} jobs not read yet.`:""}</div>`
+    : `<div>AI reading: off. Jobs are judged by rules only.</div>`;
+  $("health").innerHTML = llmLine + data.sources.map(s => `<div>${esc(s.name)}: ${s.ok ? "working" : `<span class="bad">failed (${esc(s.error)})</span>`}, ${fmt(s.fetched)} postings read, ${fmt(s.matched)} matched${s.detail?`. ${esc(s.detail)}`:""}</div>`).join("");
 }
 
 document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => {

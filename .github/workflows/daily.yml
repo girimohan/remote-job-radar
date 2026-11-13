@@ -3,6 +3,7 @@ name: Daily job radar
 on:
   schedule:
     - cron: "23 4 * * *"   # 06:23 Helsinki in winter, 07:23 in summer
+    - cron: "47 10 * * *"  # backup: GitHub sometimes skips scheduled runs; a second run the same day is harmless
   workflow_dispatch:
 
 permissions:
@@ -16,7 +17,7 @@ concurrency:
 jobs:
   radar:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -29,13 +30,14 @@ jobs:
       - name: Collect, filter and score
         id: radar
         env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           DASHBOARD_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
         run: python -m radar run
       - name: Save results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/jobs.json data/seen.json digests/latest.md
+          git add docs/jobs.json data/seen.json data/llm_cache.json digests/latest.md
           git diff --cached --quiet || git commit -m "Radar: ${{ steps.radar.outputs.matched }} matches, ${{ steps.radar.outputs.new_today }} new"
           git push
       - name: Send digest (opens an issue, which GitHub emails to you)
