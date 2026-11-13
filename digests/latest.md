@@ -1,6 +1,6 @@
 # Job radar, 2026-11-13
 
-**58 new** matching jobs today (1390 open in total). Top 15 new ones below.
+**61 new** matching jobs today (1393 open in total). Top 15 new ones below.
 
 Full list and application tracker: https://girimohan.github.io/remote-job-radar/
 
@@ -24,17 +24,17 @@ Full list and application tracker: https://girimohan.github.io/remote-job-radar/
 
 ## Today's funnel
 
-- 36,348 postings collected
-- 29,687 not one of your roles
+- 36,354 postings collected
+- 29,690 not one of your roles
 - 1,346 US-only, 599 other regions, 2,672 not remote
 - 58 from agencies, 331 duplicates, 265 below the score cut-off
-- **1,390 matches**
+- **1,393 matches**
 
 ## Sources
 
 - greenhouse: ok, 15,493 fetched, 382 matched (159 of 159 boards answered, 4 no longer exist)
 - lever: ok, 1,547 fetched, 14 matched (14 of 14 boards answered)
-- ashby: ok, 15,256 fetched, 850 matched (421 of 421 boards answered, 3 no longer exist)
+- ashby: ok, 15,262 fetched, 853 matched (421 of 421 boards answered, 3 no longer exist)
 - smartrecruiters: ok, 52 fetched, 9 matched (13 of 13 boards answered)
 - himalayas: ok, 2,000 fetched, 36 matched (newest 2,000 listings (100 pages))
 - remoteok: ok, 98 fetched, 16 matched

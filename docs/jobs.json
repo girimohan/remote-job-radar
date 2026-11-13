@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-11-13T12:11:23+00:00",
+ "generated_at": "2026-11-13T12:22:15+00:00",
  "date": "2026-11-13",
- "new_today": 58,
+ "new_today": 3,
  "first_run": false,
  "funnel": {
-  "collected": 36348,
+  "collected": 36354,
   "agency": 58,
   "not_remote": 2672,
   "us_only": 1346,
   "other_region": 599,
-  "role_mismatch": 29687,
+  "role_mismatch": 29690,
   "low_score": 265,
   "duplicate": 331,
-  "matched": 1390
+  "matched": 1393
  },
  "llm": {
   "enabled": false
@@ -37,8 +37,8 @@
   {
    "name": "ashby",
    "ok": true,
-   "fetched": 15256,
-   "matched": 850,
+   "fetched": 15262,
+   "matched": 853,
    "detail": "421 of 421 boards answered, 3 no longer exist",
    "error": ""
   },
@@ -8798,14 +8798,14 @@
    "source": "greenhouse",
    "company": "Databricks",
    "title": "Lead Solutions Architect - Generative AI (EMEA Emerging DNB)",
-   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8892970002",
-   "location": "Remote - France",
+   "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8892968002",
+   "location": "Remote - Sweden",
    "remote": true,
    "posted": "2026-10-15",
    "employment_type": "",
    "salary": "",
    "eligibility": "eu_country",
-   "eligibility_reason": "location \"Remote - France\"",
+   "eligibility_reason": "location \"Remote - Sweden\"",
    "role": "AI / LLM Engineer",
    "level": "staff",
    "score": 59,
@@ -8822,8 +8822,8 @@
    "llm_employment": "",
    "llm_languages": [],
    "llm_min_years": -1,
-   "id": "greenhouse:databricks:8892970002",
-   "snippet": "REQ ID: FEQ227R147 Location: France (Remote/Hybrid) - will require travel across Europe Recruiter: Dina Hussain About the Role We are looking for a Lead Solution Architect focused on Generative AI to support our EMEA Emerging Digital Natives and Startups business unit — one of the fastest-moving, most technically ambitious patches in EMEA. Our customers are digital-native and cloud-native companies who build on the f"
+   "id": "greenhouse:databricks:8892968002",
+   "snippet": "REQ ID: FEQ227R147 Location: Sweden (Remote/Hybrid) - will require travel across Europe Recruiter: Dina Hussain About the Role We are looking for a Lead Solution Architect focused on Generative AI to support our EMEA Emerging Digital Natives and Startups business unit — one of the fastest-moving, most technically ambitious patches in EMEA. Our customers are digital-native and cloud-native companies who build on the f"
   },
   {
    "source": "weworkremotely",
@@ -13263,6 +13263,37 @@
   },
   {
    "source": "ashby",
+   "company": "Elevenlabs",
+   "title": "Full-Stack Engineer (Backend Leaning) - ElevenAI",
+   "url": "https://jobs.ashbyhq.com/ElevenLabs/3809888d-a838-420a-8474-d217e48cef88",
+   "location": "United Kingdom; Dublin; Hungary; Bulgaria; Sofia; Switzerland; Denmark; Poland; Warsaw; Sweden; Zurich; Stockholm; London; Czechia; UAE ; Berlin",
+   "remote": true,
+   "posted": "2026-11-13",
+   "employment_type": "FullTime",
+   "salary": "",
+   "eligibility": "eu_country",
+   "eligibility_reason": "location \"United Kingdom; Dublin; Hungary; Bulgaria; Sofia; Switzerlan\"",
+   "role": "Backend Engineer",
+   "level": "mid",
+   "score": 55,
+   "reasons": [
+    "skills: llm, agents",
+    "posted this week"
+   ],
+   "first_seen": "2026-11-13",
+   "language": "en",
+   "variants": 1,
+   "llm_status": "",
+   "llm_summary": "",
+   "rule_eligibility": "",
+   "llm_employment": "",
+   "llm_languages": [],
+   "llm_min_years": -1,
+   "id": "ashby:elevenlabs:3809888d-a838-420a-8474-d217e48cef88",
+   "snippet": "ABOUT ELEVENLABS\n\nElevenLabs is an AI research and product company transforming how we interact with technology.\n\nWe launched in January 2023 with the first human-like AI voice model. Today, we serve millions of users and thousands of businesses - from fast-growing startups to large enterprises like Deutsche Telekom and Meta. Our investors are some of the world's most prominent, including Andreessen Horowitz, ICONIQ "
+  },
+  {
+   "source": "ashby",
    "company": "Enode",
    "title": "Senior Software Engineer (Home Energy)",
    "url": "https://jobs.ashbyhq.com/enode/83a3de6b-5f7c-4bcd-a374-ed55025af38d",
@@ -13949,14 +13980,14 @@
    "source": "greenhouse",
    "company": "Affirm",
    "title": "Senior Software Engineer, Fullstack (International)",
-   "url": "https://job-boards.greenhouse.io/affirm/jobs/8200180003",
-   "location": "Remote Poland",
+   "url": "https://job-boards.greenhouse.io/affirm/jobs/8200178003",
+   "location": "Remote Spain",
    "remote": true,
    "posted": "2026-11-12",
    "employment_type": "",
    "salary": "",
    "eligibility": "eu_country",
-   "eligibility_reason": "location \"Remote Poland\"",
+   "eligibility_reason": "location \"Remote Spain\"",
    "role": "Backend Engineer",
    "level": "senior",
    "score": 54,
@@ -13975,7 +14006,7 @@
    "llm_employment": "",
    "llm_languages": [],
    "llm_min_years": -1,
-   "id": "greenhouse:affirm:8200180003",
+   "id": "greenhouse:affirm:8200178003",
    "snippet": "At Affirm, we exist for the moments that matter—giving people a clear, predictable way to pay over time, with no hidden fees, no surprises, and no tradeoffs on what matters most. The International Accelerator Engineering team is growing, and we're looking for a Senior Software Engineer to join us! We're a full-stack team located entirely in Europe within the same time zone, but culturally rooted in Silicon Valley. We"
   },
   {
@@ -15048,7 +15079,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137224",
-   "snippet": "Remote - Before you read further: applying to this role requires a Loom video walkthrough under 5 minutes of the best thing you have built, plus a repo or live link. Tell us the hardest problem you hit and how you solved it. Focus on architecture decisions and tradeoffs, not a f... Please mention the word **CHARMINGLY** and tag RMjAuMTIwLjIyMC4xNDY= when applying to show you read the job post completely (#RMjAuMTIwLj"
+   "snippet": "Remote - Before you read further: applying to this role requires a Loom video walkthrough under 5 minutes of the best thing you have built, plus a repo or live link. Tell us the hardest problem you hit and how you solved it. Focus on architecture decisions and tradeoffs, not a f... Please mention the word **CHARMINGLY** and tag RMy40MS4yMTAuMTM4 when applying to show you read the job post completely (#RMy40MS4yMTAuMT"
   },
   {
    "source": "ashby",
@@ -15298,6 +15329,37 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "ashby:elevenlabs:c7d59014-b918-4c15-ae33-79f5c9f2cf9f",
+   "snippet": "ABOUT ELEVENLABS\n\nElevenLabs is an AI research and product company transforming how we interact with technology.\n\nWe launched in January 2023 with the first human-like AI voice model. Today, we serve millions of users and thousands of businesses - from fast-growing startups to large enterprises like Deutsche Telekom and Meta. Our investors are some of the world's most prominent, including Andreessen Horowitz, ICONIQ "
+  },
+  {
+   "source": "ashby",
+   "company": "Elevenlabs",
+   "title": "Full-Stack Engineer (Frontend Leaning) - ElevenAI",
+   "url": "https://jobs.ashbyhq.com/ElevenLabs/5f83c6ff-bc79-4199-ba59-6abab6d69567",
+   "location": "United Kingdom; Dublin; Hungary; Bulgaria; Switzerland; Denmark; Poland; Warsaw; Sweden; Zurich; Stockholm; London; Czechia; UAE ; Berlin",
+   "remote": true,
+   "posted": "2026-11-13",
+   "employment_type": "FullTime",
+   "salary": "",
+   "eligibility": "eu_country",
+   "eligibility_reason": "location \"United Kingdom; Dublin; Hungary; Bulgaria; Switzerland; Denm\"",
+   "role": "Full-Stack Engineer",
+   "level": "mid",
+   "score": 53,
+   "reasons": [
+    "skills: typescript, agents",
+    "posted this week"
+   ],
+   "first_seen": "2026-11-13",
+   "language": "en",
+   "variants": 1,
+   "llm_status": "",
+   "llm_summary": "",
+   "rule_eligibility": "",
+   "llm_employment": "",
+   "llm_languages": [],
+   "llm_min_years": -1,
+   "id": "ashby:elevenlabs:5f83c6ff-bc79-4199-ba59-6abab6d69567",
    "snippet": "ABOUT ELEVENLABS\n\nElevenLabs is an AI research and product company transforming how we interact with technology.\n\nWe launched in January 2023 with the first human-like AI voice model. Today, we serve millions of users and thousands of businesses - from fast-growing startups to large enterprises like Deutsche Telekom and Meta. Our investors are some of the world's most prominent, including Andreessen Horowitz, ICONIQ "
   },
   {
@@ -17328,10 +17390,10 @@
    "source": "greenhouse",
    "company": "Meridial",
    "title": "Hindi Voice Actor - Freelance AI Trainer Project",
-   "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4788686101",
+   "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4707901101",
    "location": "World Wide - Remote",
    "remote": true,
-   "posted": "2026-02-23",
+   "posted": "2025-11-07",
    "employment_type": "",
    "salary": "",
    "eligibility": "worldwide",
@@ -17351,8 +17413,8 @@
    "llm_employment": "",
    "llm_languages": [],
    "llm_min_years": -1,
-   "id": "greenhouse:agency:4788686101",
-   "snippet": "Are you an experienced voice actor eager to shape the future of AI? Large-scale language models and speech technologies are evolving rapidly, moving beyond simple interactions into expressive, human-like communication. With high-quality training data, tomorrow’s AI can deliver more natural, accurate, and engaging voice experiences across education, entertainment, accessibility, and beyond. That training data begins w"
+   "id": "greenhouse:agency:4707901101",
+   "snippet": "Are you an experienced Hindi voice actor eager to shape the future of AI? Large-scale language models and speech technologies are evolving rapidly, moving beyond simple interactions into expressive, human-like communication. With high-quality training data, tomorrow’s AI can deliver more natural, accurate, and engaging voice experiences across education, entertainment, accessibility, and beyond. That training data be"
   },
   {
    "source": "greenhouse",
@@ -19818,10 +19880,10 @@
    "source": "greenhouse",
    "company": "Meridial",
    "title": "Portuguese Voice Actor - Freelance AI Trainer Project",
-   "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4788685101",
+   "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4707905101",
    "location": "World Wide - Remote",
    "remote": true,
-   "posted": "2026-02-23",
+   "posted": "2025-11-07",
    "employment_type": "",
    "salary": "",
    "eligibility": "worldwide",
@@ -19841,8 +19903,8 @@
    "llm_employment": "",
    "llm_languages": [],
    "llm_min_years": -1,
-   "id": "greenhouse:agency:4788685101",
-   "snippet": "Are you an experienced voice actor eager to shape the future of AI? Large-scale language models and speech technologies are evolving rapidly, moving beyond simple interactions into expressive, human-like communication. With high-quality training data, tomorrow’s AI can deliver more natural, accurate, and engaging voice experiences across education, entertainment, accessibility, and beyond. That training data begins w"
+   "id": "greenhouse:agency:4707905101",
+   "snippet": "Are you an experienced Portuguese voice actor eager to shape the future of AI? Large-scale language models and speech technologies are evolving rapidly, moving beyond simple interactions into expressive, human-like communication. With high-quality training data, tomorrow’s AI can deliver more natural, accurate, and engaging voice experiences across education, entertainment, accessibility, and beyond. That training da"
   },
   {
    "source": "greenhouse",
@@ -21514,6 +21576,37 @@
    "llm_min_years": -1,
    "id": "ashby:clickhouse:fe8430ad-2150-4838-ae36-535aa659b389",
    "snippet": "Recognised on the 2025 Forbes Cloud 100 list, ClickHouse is one of the most innovative and fast-growing private cloud companies. With more than 3,000 customers and ARR that has grown over 250 percent year over year, ClickHouse leads the market in real-time analytics, data warehousing, observability, and AI workloads.\n\nThe company’s sustained, accelerating momentum was recently validated by a $400M Series D financing "
+  },
+  {
+   "source": "ashby",
+   "company": "Constructor",
+   "title": "Data Engineer: Merchant Intelligence Agent",
+   "url": "https://jobs.ashbyhq.com/constructor/16d7a5fa-06fe-4e66-9709-072435a324ae",
+   "location": "Remote; Germany",
+   "remote": true,
+   "posted": "2026-11-13",
+   "employment_type": "FullTime",
+   "salary": "",
+   "eligibility": "eu_country",
+   "eligibility_reason": "location \"Remote; Germany\"",
+   "role": "Data Engineer",
+   "level": "mid",
+   "score": 52,
+   "reasons": [
+    "skills: python, aws, agents",
+    "posted this week"
+   ],
+   "first_seen": "2026-11-13",
+   "language": "en",
+   "variants": 1,
+   "llm_status": "",
+   "llm_summary": "",
+   "rule_eligibility": "",
+   "llm_employment": "",
+   "llm_languages": [],
+   "llm_min_years": -1,
+   "id": "ashby:constructor:16d7a5fa-06fe-4e66-9709-072435a324ae",
+   "snippet": "About Us\n\nLaunched in 2019, Constructor is an AI-first e-commerce search and discovery platform that helps shoppers find the right products at the right time and enables leading global e-commerce brands to drive meaningful revenue and conversion gains.\n\nAbout the Team\n\nWe build the AI agent that helps merchandisers, product managers, and executives grow their e-commerce business: it finds opportunities in their data,"
   },
   {
    "source": "ashby",
@@ -23769,14 +23862,14 @@
    "source": "greenhouse",
    "company": "Alpaca ",
    "title": "Senior Software Engineer - Clearing",
-   "url": "https://job-boards.greenhouse.io/alpaca/jobs/6207222004",
-   "location": "Remote - Europe or Remote America",
+   "url": "https://job-boards.greenhouse.io/alpaca/jobs/5985818004",
+   "location": "Remote - Europe",
    "remote": true,
-   "posted": "2026-09-24",
+   "posted": "2026-05-04",
    "employment_type": "",
    "salary": "",
    "eligibility": "europe",
-   "eligibility_reason": "location \"Remote - Europe or Remote America\"",
+   "eligibility_reason": "location \"Remote - Europe\"",
    "role": "Backend Engineer",
    "level": "senior",
    "score": 50,
@@ -23794,7 +23887,7 @@
    "llm_employment": "",
    "llm_languages": [],
    "llm_min_years": -1,
-   "id": "greenhouse:alpaca:6207222004",
+   "id": "greenhouse:alpaca:5985818004",
    "snippet": "Who We Are: Alpaca is a US-headquartered, global leader in agent-first brokerage infrastructure for stocks, ETFs, options, crypto, fixed income, 24/5 trading, and more. Amongst our subsidiaries, Alpaca is a licensed financial services company, serving hundreds of financial institutions across 40 countries with our institutional-grade APIs. This includes broker-dealers, investment advisors, wealth managers, hedge fund"
   },
   {
@@ -24422,7 +24515,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137387",
-   "snippet": "Remote - Mirantis, an IREN company, is the Kubernetes-native AI infrastructure company, enabling organizations to build and operate scalable, secure, and sovereign infrastructure for modern AI, machine learning, and data-intensive applications. By combining open source innovatio... Please mention the word **SEAMLESS** and tag RMjAuMTIwLjIyMC4xNDY= when applying to show you read the job post completely (#RMjAuMTIwLjIy"
+   "snippet": "Remote - Mirantis, an IREN company, is the Kubernetes-native AI infrastructure company, enabling organizations to build and operate scalable, secure, and sovereign infrastructure for modern AI, machine learning, and data-intensive applications. By combining open source innovatio... Please mention the word **SEAMLESS** and tag RMy40MS4yMTAuMTM4 when applying to show you read the job post completely (#RMy40MS4yMTAuMTM4"
   },
   {
    "source": "ashby",
@@ -24604,7 +24697,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137465",
-   "snippet": "Remote - Location: Mostly remote (within Germany), with monthly in-person collaboration at our Berlin officeHours: Part-time, 32 hours per weekContract: Fixed-termSalary: EUR 53,000 â 59,000 (at 32 hours per week)We are building a new capability that turns fragmented,... Please mention the word **THRIFTY** and tag RMjAuMTIwLjIyMC4xNDY= when applying to show you read the job post completely (#RMjAuMTIwLjIyMC4xNDY=)."
+   "snippet": "Remote - Location: Mostly remote (within Germany), with monthly in-person collaboration at our Berlin officeHours: Part-time, 32 hours per weekContract: Fixed-termSalary: EUR 53,000 â 59,000 (at 32 hours per week)We are building a new capability that turns fragmented,... Please mention the word **THRIFTY** and tag RMy40MS4yMTAuMTM4 when applying to show you read the job post completely (#RMy40MS4yMTAuMTM4). This is"
   },
   {
    "source": "ashby",
@@ -27966,14 +28059,14 @@
    "source": "greenhouse",
    "company": "Affirm",
    "title": "Software Engineer II, Fullstack (International)",
-   "url": "https://job-boards.greenhouse.io/affirm/jobs/8202545003",
-   "location": "Remote Poland",
+   "url": "https://job-boards.greenhouse.io/affirm/jobs/8202548003",
+   "location": "Remote Spain",
    "remote": true,
    "posted": "2026-11-13",
    "employment_type": "",
    "salary": "",
    "eligibility": "eu_country",
-   "eligibility_reason": "location \"Remote Poland\"",
+   "eligibility_reason": "location \"Remote Spain\"",
    "role": "Backend Engineer",
    "level": "mid",
    "score": 47,
@@ -27991,7 +28084,7 @@
    "llm_employment": "",
    "llm_languages": [],
    "llm_min_years": -1,
-   "id": "greenhouse:affirm:8202545003",
+   "id": "greenhouse:affirm:8202548003",
    "snippet": "At Affirm, we exist for the moments that matter—giving people a clear, predictable way to pay over time, with no hidden fees, no surprises, and no tradeoffs on what matters most. The International Accelerator Engineering team is growing, and we're looking for a Software Engineer to join us! We're a full-stack team located entirely in Europe within the same time zone, but culturally rooted in Silicon Valley. We direct"
   },
   {
@@ -28849,7 +28942,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137427",
-   "snippet": "Remote - Prenosis Inc. is an artificial intelligence company pioneering precision medicine in acute care. Our Immunixâ¢ precision medicine platform drives the development of precision products and enables real-time delivery of optimal therapy. We've created and validated the fi... Please mention the word **STELLARLY** and tag RMjAuMTIwLjIyMC4xNDY= when applying to show you read the job post completely (#RMjAuMTIwLjI"
+   "snippet": "Remote - Prenosis Inc. is an artificial intelligence company pioneering precision medicine in acute care. Our Immunixâ¢ precision medicine platform drives the development of precision products and enables real-time delivery of optimal therapy. We've created and validated the fi... Please mention the word **STELLARLY** and tag RMy40MS4yMTAuMTM4 when applying to show you read the job post completely (#RMy40MS4yMTAuMTM"
   },
   {
    "source": "ashby",
@@ -32022,14 +32115,14 @@
    "source": "greenhouse",
    "company": "Affirm",
    "title": "Senior Software Engineer, Fullstack (Repayments UX)",
-   "url": "https://job-boards.greenhouse.io/affirm/jobs/8040380003",
-   "location": "Remote Spain",
+   "url": "https://job-boards.greenhouse.io/affirm/jobs/8040378003",
+   "location": "Remote Poland",
    "remote": true,
    "posted": "2026-10-27",
    "employment_type": "",
    "salary": "",
    "eligibility": "eu_country",
-   "eligibility_reason": "location \"Remote Spain\"",
+   "eligibility_reason": "location \"Remote Poland\"",
    "role": "Backend Engineer",
    "level": "senior",
    "score": 44,
@@ -32047,21 +32140,21 @@
    "llm_employment": "",
    "llm_languages": [],
    "llm_min_years": -1,
-   "id": "greenhouse:affirm:8040380003",
+   "id": "greenhouse:affirm:8040378003",
    "snippet": "At Affirm, we exist for the moments that matter—giving people a clear, predictable way to pay over time, with no hidden fees, no surprises, and no tradeoffs on what matters most. The Repayment UX Engineering team is growing, and we're looking for a Senior Full-Stack Software Engineer. We're a full-stack team located entirely in Europe within the same time zone, but culturally rooted in Silicon Valley. We directly imp"
   },
   {
    "source": "greenhouse",
    "company": "Affirm",
    "title": "Software Engineer II, Fullstack (Repayment UX)",
-   "url": "https://job-boards.greenhouse.io/affirm/jobs/8040392003",
-   "location": "Remote Poland",
+   "url": "https://job-boards.greenhouse.io/affirm/jobs/8040394003",
+   "location": "Remote Spain",
    "remote": true,
    "posted": "2026-10-27",
    "employment_type": "",
    "salary": "",
    "eligibility": "eu_country",
-   "eligibility_reason": "location \"Remote Poland\"",
+   "eligibility_reason": "location \"Remote Spain\"",
    "role": "Backend Engineer",
    "level": "mid",
    "score": 44,
@@ -32078,7 +32171,7 @@
    "llm_employment": "",
    "llm_languages": [],
    "llm_min_years": -1,
-   "id": "greenhouse:affirm:8040392003",
+   "id": "greenhouse:affirm:8040394003",
    "snippet": "At Affirm, we exist for the moments that matter—giving people a clear, predictable way to pay over time, with no hidden fees, no surprises, and no tradeoffs on what matters most. The Repayment UX Engineering team is growing, and we're looking for a Full-Stack Software Engineer. We're a full-stack team located entirely in Europe within the same time zone, but culturally rooted in Silicon Valley. We directly improve th"
   },
   {
@@ -34968,14 +35061,14 @@
    "source": "greenhouse",
    "company": "Affirm",
    "title": "Senior Software Engineer, Mobile (Repayment UX)",
-   "url": "https://job-boards.greenhouse.io/affirm/jobs/7799935003",
-   "location": "Remote Spain",
+   "url": "https://job-boards.greenhouse.io/affirm/jobs/7799933003",
+   "location": "Remote Poland",
    "remote": true,
    "posted": "2026-07-14",
    "employment_type": "",
    "salary": "",
    "eligibility": "eu_country",
-   "eligibility_reason": "location \"Remote Spain\"",
+   "eligibility_reason": "location \"Remote Poland\"",
    "role": "Backend Engineer",
    "level": "senior",
    "score": 42,
@@ -34993,7 +35086,7 @@
    "llm_employment": "",
    "llm_languages": [],
    "llm_min_years": -1,
-   "id": "greenhouse:affirm:7799935003",
+   "id": "greenhouse:affirm:7799933003",
    "snippet": "At Affirm, we exist for the moments that matter—giving people a clear, predictable way to pay over time, with no hidden fees, no surprises, and no tradeoffs on what matters most. The Repayment UX Engineering team is growing, and we're looking for a Senior Software Engineer specializing in React Native development. We're a full-stack team located entirely in Europe within the same time zone, but culturally rooted in S"
   },
   {
@@ -36392,7 +36485,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137114",
-   "snippet": "Remote - Most sales tools help you send emails. Weâre building something different.At Salesforge, weâre creating autonomous AI agents that can:Find the right prospectsGenerate highly personalized outreachRun conversationsAnd book meetingsAll without human invo... Please mention the word **EMPATHY** and tag RMjAuMTIwLjIyMC4xNDY= when applying to show you read the job post completely (#RMjAuMTIwLjIyMC4xNDY=). This "
+   "snippet": "Remote - Most sales tools help you send emails. Weâre building something different.At Salesforge, weâre creating autonomous AI agents that can:Find the right prospectsGenerate highly personalized outreachRun conversationsAnd book meetingsAll without human invo... Please mention the word **EMPATHY** and tag RMy40MS4yMTAuMTM4 when applying to show you read the job post completely (#RMy40MS4yMTAuMTM4). This is a bet"
   },
   {
    "source": "greenhouse",
@@ -37239,7 +37332,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137544",
-   "snippet": "Remote - Rain is the world's first AI Financial Health Platform, serving 3.5 million employees at leading organizations like McDonald's, Marriott, and T-Mobile. Rain works in the background to optimize every employee's financial life to prevent shortfalls and build long-term sta... Please mention the word **COVENANT** and tag RMjAuMTIwLjIyMC4xNDY= when applying to show you read the job post completely (#RMjAuMTIwLjIy"
+   "snippet": "Remote - Rain is the world's first AI Financial Health Platform, serving 3.5 million employees at leading organizations like McDonald's, Marriott, and T-Mobile. Rain works in the background to optimize every employee's financial life to prevent shortfalls and build long-term sta... Please mention the word **COVENANT** and tag RMy40MS4yMTAuMTM4 when applying to show you read the job post completely (#RMy40MS4yMTAuMTM4"
   },
   {
    "source": "remoteok",
@@ -37269,7 +37362,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137545",
-   "snippet": "Remote - Established in 1744, Sothebyâs promotes access and ownership of exceptional art and luxury objects through auctions, private sales and retail. Our deep expertise across 70 selling categories is supported by a leading technology platform and a global network of special... Please mention the word **EVALUATIVE** and tag RMjAuMTIwLjIyMC4xNDY= when applying to show you read the job post completely (#RMjAuMTIwLj"
+   "snippet": "Remote - Established in 1744, Sothebyâs promotes access and ownership of exceptional art and luxury objects through auctions, private sales and retail. Our deep expertise across 70 selling categories is supported by a leading technology platform and a global network of special... Please mention the word **EVALUATIVE** and tag RMy40MS4yMTAuMTM4 when applying to show you read the job post completely (#RMy40MS4yMTAuMT"
   },
   {
    "source": "ashby",
