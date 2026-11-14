@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-11-14T11:38:08+00:00",
+ "generated_at": "2026-11-14T16:45:13+00:00",
  "date": "2026-11-14",
- "new_today": 51,
+ "new_today": 3,
  "first_run": false,
  "funnel": {
-  "collected": 36295,
-  "agency": 217,
-  "not_remote": 2628,
-  "us_only": 1330,
-  "other_region": 573,
-  "role_mismatch": 29561,
-  "low_score": 251,
-  "duplicate": 350,
-  "matched": 1385
+  "collected": 36289,
+  "agency": 160,
+  "not_remote": 2634,
+  "us_only": 1327,
+  "other_region": 575,
+  "role_mismatch": 29616,
+  "low_score": 249,
+  "duplicate": 348,
+  "matched": 1380
  },
  "llm": {
   "enabled": false
@@ -21,7 +21,7 @@
   {
    "name": "greenhouse",
    "ok": true,
-   "fetched": 15441,
+   "fetched": 15433,
    "matched": 379,
    "detail": "159 of 159 boards answered, 4 no longer exist",
    "error": ""
@@ -37,7 +37,7 @@
   {
    "name": "ashby",
    "ok": true,
-   "fetched": 15244,
+   "fetched": 15245,
    "matched": 852,
    "detail": "421 of 421 boards answered, 3 no longer exist",
    "error": ""
@@ -54,7 +54,7 @@
    "name": "himalayas",
    "ok": true,
    "fetched": 2000,
-   "matched": 27,
+   "matched": 24,
    "detail": "newest 2,000 listings (100 pages)",
    "error": ""
   },
@@ -62,7 +62,7 @@
    "name": "remoteok",
    "ok": true,
    "fetched": 97,
-   "matched": 17,
+   "matched": 16,
    "detail": "",
    "error": ""
   },
@@ -85,8 +85,8 @@
   {
    "name": "jobicy",
    "ok": true,
-   "fetched": 121,
-   "matched": 6,
+   "fetched": 123,
+   "matched": 5,
    "detail": "regions: europe, emea, anywhere",
    "error": ""
   },
@@ -94,15 +94,15 @@
    "name": "arbeitnow",
    "ok": true,
    "fetched": 1500,
-   "matched": 11,
+   "matched": 12,
    "detail": "newest 1,500 listings (5 pages)",
    "error": ""
   },
   {
    "name": "workingnomads",
    "ok": true,
-   "fetched": 36,
-   "matched": 8,
+   "fetched": 35,
+   "matched": 7,
    "detail": "",
    "error": ""
   },
@@ -713,39 +713,6 @@
    "snippet": "{\"lang\":\"en\",\"role\":[\"AI\",\"Data, AI & Analytics\"],\"country\":[\"Finland\"],\"seniority\":[\"senior\"],\"image\":\"https://www.solita.fi/wp-content/uploads/2024/11/Open-positions-24-6.jpg\",\"intro\":\"We’re looking for a Forward Deployed Engineer to turn AI and machine learning opportunities into production solutions.\"} Solita is helping organizations move from experimenting with AI and machine learning to using them as a meaningf"
   },
   {
-   "source": "workingnomads",
-   "company": "Lemon.io",
-   "title": "Senior AI Engineer / Architect",
-   "url": "https://www.workingnomads.com/job/go/1944801/",
-   "location": "Europe, LATAM, APAC, the U.S., Canada",
-   "remote": true,
-   "posted": "2026-10-15",
-   "employment_type": "",
-   "salary": "",
-   "eligibility": "europe",
-   "eligibility_reason": "location \"Europe, LATAM, APAC, the U.S., Canada\"",
-   "role": "AI / LLM Engineer",
-   "level": "staff",
-   "score": 77,
-   "reasons": [
-    "skills: python, rag, llm, langchain, mlops, next.js",
-    "staff-level title",
-    "asks for 4+ years",
-    "contract or part-time possible"
-   ],
-   "first_seen": "2026-11-12",
-   "language": "en",
-   "variants": 1,
-   "llm_status": "",
-   "llm_summary": "",
-   "rule_eligibility": "",
-   "llm_employment": "",
-   "llm_languages": [],
-   "llm_min_years": -1,
-   "id": "workingnomads:https://www.workingnomads.com/job/go/1944801/",
-   "snippet": "Lemon.io helps companies in the US and Europe hire experienced engineers, from funded startups to teams like Klarna, Retool, and Pinterest. We’ve been doing this since 2015, and more than 1,500 companies have hired engineers through us. New roles for senior AI engineers come in all the time, and several are open right now. Two ways to work with clients Contract: most roles are contract-based. You join the client’s te"
-  },
-  {
    "source": "ashby",
    "company": "Sensor Tower",
    "title": "AI Engineer",
@@ -866,38 +833,6 @@
    "llm_min_years": -1,
    "id": "ashby:supabase:3b5d54ca-741b-45ac-bd3f-31605a0d3541",
    "snippet": "ABOUT SUPABASE\n\nSupabase is the Postgres development platform, built by developers for developers. We provide a complete backend solution including Database, Auth, Storage, Edge Functions, Realtime, and Vector Search. All services are deeply integrated and designed for growth.\n\n\n\nABOUT THE ROLE\n\nWe are hiring a AI Platform Engineer to build the execution layer for Supabase's internal AI systems.\n\nSupabase is building"
-  },
-  {
-   "source": "jobicy",
-   "company": "Docplanner",
-   "title": "Junior Software Engineer – Early Career (Strong Problem solving & Coding Focus) - 100% Remote within Spain",
-   "url": "https://jobicy.com/jobs/155228-junior-software-engineer-early-career-strong-problem-solving-coding-focus-100-remote-within-spain-2",
-   "location": "Spain",
-   "remote": true,
-   "posted": "2026-11-13",
-   "employment_type": "Full-Time",
-   "salary": "",
-   "eligibility": "eu_country",
-   "eligibility_reason": "location \"Spain\"",
-   "role": "Backend Engineer",
-   "level": "junior",
-   "score": 75,
-   "reasons": [
-    "skills: embeddings, react, typescript, aws, kubernetes, agents",
-    "junior-friendly title",
-    "posted this week"
-   ],
-   "first_seen": "2026-11-13",
-   "language": "en",
-   "variants": 1,
-   "llm_status": "",
-   "llm_summary": "",
-   "rule_eligibility": "",
-   "llm_employment": "",
-   "llm_languages": [],
-   "llm_min_years": -1,
-   "id": "jobicy:155228",
-   "snippet": "Welcome to the good side of tech 👋 You might know us as ZnanyLekarz in Poland or Doctoralia in Spain. Globally, we are Docplanner. We build technology that helps people live longer, healthier lives. Our products connect patients with doctors, power clinical workflows, and support healthcare systems used by millions of people every month. Engineering at Docplanner is about building reliable, scalable systems with real"
   },
   {
    "source": "remotive",
@@ -1085,6 +1020,38 @@
    "llm_min_years": -1,
    "id": "greenhouse:agency:4676601101",
    "snippet": "Are you an AI QA expert eager to shape the future of AI? Large-scale language models are evolving from clever chatbots into enterprise-grade platforms. With rigorous evaluation data, tomorrow’s AI can democratize world-class education, keep pace with cutting-edge research, and streamline workflows for teams everywhere. That quality begins with you—we need your expertise to harden model reasoning and reliability. We’r"
+  },
+  {
+   "source": "himalayas",
+   "company": "micro1",
+   "title": "ML Engineer (MSc. or PhD)",
+   "url": "https://himalayas.app/companies/micro1/jobs/ml-engineer-msc-or-phd?utm_source=api",
+   "location": "Worldwide",
+   "remote": true,
+   "posted": "2026-11-14",
+   "employment_type": "Contractor",
+   "salary": "",
+   "eligibility": "worldwide",
+   "eligibility_reason": "location \"Worldwide\"",
+   "role": "ML Engineer / MLOps",
+   "level": "mid",
+   "score": 74,
+   "reasons": [
+    "skills: python, agents",
+    "contract or part-time possible",
+    "posted this week"
+   ],
+   "first_seen": "2026-11-12",
+   "language": "en",
+   "variants": 1,
+   "llm_status": "",
+   "llm_summary": "",
+   "rule_eligibility": "",
+   "llm_employment": "",
+   "llm_languages": [],
+   "llm_min_years": -1,
+   "id": "himalayas:https://himalayas.app/companies/micro1/jobs/ml-engineer-msc-or-phd",
+   "snippet": "Senior ML Engineer (MSc. or PhD) Pay: $60–$120/hour Location: Global, fully remote Job Type: Contractor (~15 hours per week) Schedule: Flexible—you choose the hours and days you work, including weekends if desired We are looking for highly skilled Machine Learning Experts to contribute to an AI training project involving model development, training and inference systems, numerical computing, performance optimization,"
   },
   {
    "source": "ashby",
@@ -1395,38 +1362,6 @@
    "llm_min_years": -1,
    "id": "ashby:everai:6f9797f8-0768-4cf5-8112-7c8fe213f652",
    "snippet": "OUR VISION & PRODUCTS\n\n🚀 EverAI — Building the Future of AI Companionship\n\nOne of the Top 15 Largest & Fastest-Growing AI Companies in the World\n\n50 Million Users in 2 years — Help Us Reach 100M first, 500M next\n\n\n\nAt EverAI, we’re shaping what it means to connect with AI. With 50 million users and counting, we're not just building products — we're creating entirely new categories.\n\nOur flagship product is the world’"
-  },
-  {
-   "source": "himalayas",
-   "company": "Foxelli Group ",
-   "title": "AI Engineer (Technical Product Owner)",
-   "url": "https://himalayas.app/companies/foxelli-group/jobs/ai-engineer-technical-product-owner-643559014?utm_source=api",
-   "location": "Albania, Andorra, Armenia, Belgium, Bosnia and Herzegovina, Bulgaria, Croatia, Czechia, Estonia, France, Georgia, Greece, Italy, Kosovo, Latvia, Lithuania, Malta, Moldova, Montenegro, North Macedonia, Poland, Slovenia",
-   "remote": true,
-   "posted": "2026-11-14",
-   "employment_type": "Full Time",
-   "salary": "EUR 2,000-3,000",
-   "eligibility": "eu_country",
-   "eligibility_reason": "allowed countries include belgium, bulgaria, croatia",
-   "role": "AI / LLM Engineer",
-   "level": "mid",
-   "score": 72,
-   "reasons": [
-    "skills: python, fastapi, langchain, next.js",
-    "contract or part-time possible",
-    "posted this week"
-   ],
-   "first_seen": "2026-11-14",
-   "language": "en",
-   "variants": 1,
-   "llm_status": "",
-   "llm_summary": "",
-   "rule_eligibility": "",
-   "llm_employment": "",
-   "llm_languages": [],
-   "llm_min_years": -1,
-   "id": "himalayas:https://himalayas.app/companies/foxelli-group/jobs/ai-engineer-technical-product-owner-643559014",
-   "snippet": "At Foxelli, we’re building more than e-commerce brands - we’re building a tribe of thoughtful humans: AI enthusiasts, curious builders, and ambitious minds who care about doing meaningful work together. Ten years in, our D2C brands reach millions and generate over $20M annually. Our focus stays simple: create products customers love and a team that actually enjoys building them. If you love to learn, experiment, thin"
   },
   {
    "source": "ashby",
@@ -2854,6 +2789,38 @@
    "llm_min_years": -1,
    "id": "ashby:iceye:9dc49b37-2a22-4e94-9af3-d4312f366cd8",
    "snippet": "ROLE HIGHLIGHTS:\n\n - AI Solutions Engineer\n\n - Location: Espoo, Finland\n\n - Department:  Business Applications\n\n - Reports to: AI Platform Lead / Head of Business Applications\n\n - Employment type: Permanent\n\n - Workplace model: Hybrid / Office\n\n - Employment is subject to applicable security screening (incl. SUPO, where required)\n\n\n\n\nWHY THIS ROLE MATTERS:\n\nThe Business Applications team focuses on high-impact intern"
+  },
+  {
+   "source": "arbeitnow",
+   "company": "Koboldmetals",
+   "title": "Software Engineer (All Levels), United Kingdom",
+   "url": "https://www.arbeitnow.co.uk/jobs/companies/koboldmetals/remote-software-engineer-all-levels-united-kingdom-213631",
+   "location": "Remote",
+   "remote": true,
+   "posted": "2026-11-14",
+   "employment_type": "",
+   "salary": "",
+   "eligibility": "eu_country",
+   "eligibility_reason": "title \"Software Engineer (All Levels), United Kingdom\"",
+   "role": "Backend Engineer",
+   "level": "mid",
+   "score": 68,
+   "reasons": [
+    "skills: python, rag, docker, react, aws, kubernetes",
+    "asks for 4+ years",
+    "posted this week"
+   ],
+   "first_seen": "2026-11-14",
+   "language": "en",
+   "variants": 1,
+   "llm_status": "",
+   "llm_summary": "",
+   "rule_eligibility": "",
+   "llm_employment": "",
+   "llm_languages": [],
+   "llm_min_years": -1,
+   "id": "arbeitnow:remote-software-engineer-all-levels-united-kingdom-213631",
+   "snippet": "We are open to hiring at multiple levels for this role, depending on experience, impact, and demonstrated ownership. While this role is level-agnostic, it is best suited for engineers with experience owning production systems and working in highly ambiguous problem spaces. Software Engineer About the company: In the coming decades, demand for critical minerals such as copper, lithium, and cobalt will continue to grow"
   },
   {
    "source": "ashby",
@@ -5049,39 +5016,6 @@
    "llm_min_years": -1,
    "id": "ashby:owkin:df08e875-432e-420f-ac18-543c07e0ee1b",
    "snippet": "ABOUT US\n\nOwkin is an agentic AI company pioneering Biological Artificial Superintelligence to solve problems in biology where human researchers alone have failed.\nOwkin builds K Pro - an AI scientist for pharmaceutical research and strategic decision-making. K Pro orchestrates a suite of AI skills and tools to decode complex biology, accelerate research, and dramatically increase productivity.\nK Pro is built on Owki"
-  },
-  {
-   "source": "himalayas",
-   "company": "Parser",
-   "title": "Senior Full-Stack AI Engineer",
-   "url": "https://himalayas.app/companies/parser/jobs/senior-full-stack-ai-engineer-6945104598?utm_source=api",
-   "location": "Spain",
-   "remote": true,
-   "posted": "2026-11-14",
-   "employment_type": "Full Time",
-   "salary": "",
-   "eligibility": "eu_country",
-   "eligibility_reason": "allowed countries include spain",
-   "role": "AI / LLM Engineer",
-   "level": "senior",
-   "score": 64,
-   "reasons": [
-    "skills: python, fastapi, rag, llm, docker, next.js",
-    "senior-level title",
-    "asks for 8+ years",
-    "posted this week"
-   ],
-   "first_seen": "2026-11-14",
-   "language": "en",
-   "variants": 1,
-   "llm_status": "",
-   "llm_summary": "",
-   "rule_eligibility": "",
-   "llm_employment": "",
-   "llm_languages": [],
-   "llm_min_years": -1,
-   "id": "himalayas:https://himalayas.app/companies/parser/jobs/senior-full-stack-ai-engineer-6945104598",
-   "snippet": "Senior Full-Stack AI Engineer Build production-grade AI applications that support high-impact investment decisions. Who is Parser ? Technology alone does not create impact—the right teams do. Founded in 2018, Parser is a boutique technology services and consulting firm helping global organisations solve complex business challenges through digital transformation, product development and AI enablement. We are a fast-gr"
   },
   {
    "source": "ashby",
@@ -14918,7 +14852,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137224",
-   "snippet": "Remote - Before you read further: applying to this role requires a Loom video walkthrough under 5 minutes of the best thing you have built, plus a repo or live link. Tell us the hardest problem you hit and how you solved it. Focus on architecture decisions and tradeoffs, not a f... Please mention the word **CHARMINGLY** and tag RNDAuMTI0LjIzNC42OQ== when applying to show you read the job post completely (#RNDAuMTI0Lj"
+   "snippet": "Remote - Before you read further: applying to this role requires a Loom video walkthrough under 5 minutes of the best thing you have built, plus a repo or live link. Tell us the hardest problem you hit and how you solved it. Focus on architecture decisions and tradeoffs, not a f... Please mention the word **CHARMINGLY** and tag RMTMwLjEzMS4yMDQuMjI0 when applying to show you read the job post completely (#RMTMwLjEzMS"
   },
   {
    "source": "ashby",
@@ -22048,6 +21982,37 @@
   },
   {
    "source": "himalayas",
+   "company": "Intapp",
+   "title": "FinOps & Product Analytics Engineer",
+   "url": "https://himalayas.app/companies/intapp/jobs/finops-product-analytics-engineer?utm_source=api",
+   "location": "Ireland, United Kingdom",
+   "remote": true,
+   "posted": "2026-11-14",
+   "employment_type": "Full Time",
+   "salary": "",
+   "eligibility": "eu_country",
+   "eligibility_reason": "allowed countries include ireland, united kingdom",
+   "role": "Data Engineer",
+   "level": "mid",
+   "score": 52,
+   "reasons": [
+    "skills: python, llm, aws",
+    "posted this week"
+   ],
+   "first_seen": "2026-11-14",
+   "language": "en",
+   "variants": 1,
+   "llm_status": "",
+   "llm_summary": "",
+   "rule_eligibility": "",
+   "llm_employment": "",
+   "llm_languages": [],
+   "llm_min_years": -1,
+   "id": "himalayas:https://himalayas.app/companies/intapp/jobs/finops-product-analytics-engineer",
+   "snippet": "Job Description We are seeking a curious and technically sharp FinOps & Product Analytics Engineer to join our DevOps & Cloud Platform team. In this role, you will build the data foundation and AI-powered tooling that turns operational data into clear, actionable insight for engineering, product, and finance stakeholders across Intapp . We are starting with FinOps — cloud cost, cost allocation, anomaly detection, and"
+  },
+  {
+   "source": "himalayas",
    "company": "Klar Technologies GmbH",
    "title": "Senior Backend Engineer - Germany",
    "url": "https://himalayas.app/companies/klar-technologies-gmbh/jobs/senior-backend-engineer-germany?utm_source=api",
@@ -24358,7 +24323,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137387",
-   "snippet": "Remote - Mirantis, an IREN company, is the Kubernetes-native AI infrastructure company, enabling organizations to build and operate scalable, secure, and sovereign infrastructure for modern AI, machine learning, and data-intensive applications. By combining open source innovatio... Please mention the word **SEAMLESS** and tag RNDAuMTI0LjIzNC42OQ== when applying to show you read the job post completely (#RNDAuMTI0LjIz"
+   "snippet": "Remote - Mirantis, an IREN company, is the Kubernetes-native AI infrastructure company, enabling organizations to build and operate scalable, secure, and sovereign infrastructure for modern AI, machine learning, and data-intensive applications. By combining open source innovatio... Please mention the word **SEAMLESS** and tag RMTMwLjEzMS4yMDQuMjI0 when applying to show you read the job post completely (#RMTMwLjEzMS4y"
   },
   {
    "source": "ashby",
@@ -24482,40 +24447,6 @@
    "snippet": "About the team\n\nThe Applied AI Engineering team works closely with frontier startups. We are trusted advisors to, and thought partners with, startups to ensure that OpenAI’s technology is deployed safely and effectively, whilst also partnering with engineering, research, and product to turn those insights into evaluation systems, product improvements, and better model behavior.\n\nThis team sits at the intersection of "
   },
   {
-   "source": "himalayas",
-   "company": "Pindrop",
-   "title": "Senior Software Engineer, Pulse (Contract Position)",
-   "url": "https://himalayas.app/companies/pindrop/jobs/senior-software-engineer-pulse-contract-position?utm_source=api",
-   "location": "Ukraine",
-   "remote": true,
-   "posted": "2026-11-14",
-   "employment_type": "Contractor",
-   "salary": "",
-   "eligibility": "eu_country",
-   "eligibility_reason": "allowed countries include ukraine",
-   "role": "Backend Engineer",
-   "level": "senior",
-   "score": 50,
-   "reasons": [
-    "skills: python, docker, aws, kubernetes",
-    "senior-level title",
-    "asks for 7+ years",
-    "contract or part-time possible",
-    "posted this week"
-   ],
-   "first_seen": "2026-11-14",
-   "language": "en",
-   "variants": 1,
-   "llm_status": "",
-   "llm_summary": "",
-   "rule_eligibility": "",
-   "llm_employment": "",
-   "llm_languages": [],
-   "llm_min_years": -1,
-   "id": "himalayas:https://himalayas.app/companies/pindrop/jobs/senior-software-engineer-pulse-contract-position",
-   "snippet": "Who We Are Pindrop is a cybersecurity company delivering continuous identity verification across voice, video, and digital interactions. Powered by the Pindrop Intelligence Network, our unified trust platform helps enterprises answer three critical questions: Is this identity synthetic? Detect AI-generated and manipulated voice and video. Is this identity risky? Identify fraud, suspicious behavior, and other risk sig"
-  },
-  {
    "source": "ashby",
    "company": "Plain",
    "title": "Product Engineer (Full Stack)",
@@ -24574,7 +24505,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137465",
-   "snippet": "Remote - Location: Mostly remote (within Germany), with monthly in-person collaboration at our Berlin officeHours: Part-time, 32 hours per weekContract: Fixed-termSalary: EUR 53,000 â 59,000 (at 32 hours per week)We are building a new capability that turns fragmented,... Please mention the word **THRIFTY** and tag RNDAuMTI0LjIzNC42OQ== when applying to show you read the job post completely (#RNDAuMTI0LjIzNC42OQ==)."
+   "snippet": "Remote - Location: Mostly remote (within Germany), with monthly in-person collaboration at our Berlin officeHours: Part-time, 32 hours per weekContract: Fixed-termSalary: EUR 53,000 â 59,000 (at 32 hours per week)We are building a new capability that turns fragmented,... Please mention the word **THRIFTY** and tag RMTMwLjEzMS4yMDQuMjI0 when applying to show you read the job post completely (#RMTMwLjEzMS4yMDQuMjI0)."
   },
   {
    "source": "ashby",
@@ -26502,47 +26433,15 @@
   {
    "source": "himalayas",
    "company": "Cogstate",
-   "title": "Consulting Dermatologist - Central Rater & Reviewer (Czech Republic)",
-   "url": "https://himalayas.app/companies/cogstate/jobs/consulting-dermatologist-central-rater-reviewer-czech-republic?utm_source=api",
-   "location": "Czechia",
-   "remote": true,
-   "posted": "2026-11-14",
-   "employment_type": "Contractor",
-   "salary": "",
-   "eligibility": "eu_country",
-   "eligibility_reason": "allowed countries include czechia",
-   "role": "AI Trainer / Evaluator",
-   "level": "mid",
-   "score": 48,
-   "reasons": [
-    "asks for 3+ years",
-    "contract or part-time possible",
-    "posted this week"
-   ],
-   "first_seen": "2026-11-14",
-   "language": "en",
-   "variants": 1,
-   "llm_status": "",
-   "llm_summary": "",
-   "rule_eligibility": "",
-   "llm_employment": "",
-   "llm_languages": [],
-   "llm_min_years": -1,
-   "id": "himalayas:https://himalayas.app/companies/cogstate/jobs/consulting-dermatologist-central-rater-reviewer-czech-republic",
-   "snippet": "About Cogstate At Cogstate , we help improve the quality and reliability of clinical trial data by providing specialized clinical assessment, training, and quality oversight solutions to pharmaceutical and biotechnology companies around the world. Our team partners with sponsors and research sites to support the consistent administration, scoring, and review of clinical outcome assessments across global clinical tria"
-  },
-  {
-   "source": "himalayas",
-   "company": "Cogstate",
    "title": "MADRS Clinical Rater (Dutch Fluency)",
-   "url": "https://himalayas.app/companies/cogstate/jobs/madrs-clinical-rater-dutch-fluency?utm_source=api",
-   "location": "Belgium",
+   "url": "https://himalayas.app/companies/cogstate/jobs/madrs-clinical-rater-dutch-fluency-9449406090?utm_source=api",
+   "location": "France",
    "remote": true,
    "posted": "2026-11-14",
    "employment_type": "Contractor",
    "salary": "",
    "eligibility": "eu_country",
-   "eligibility_reason": "allowed countries include belgium",
+   "eligibility_reason": "allowed countries include france",
    "role": "AI Trainer / Evaluator",
    "level": "mid",
    "score": 48,
@@ -26560,7 +26459,7 @@
    "llm_employment": "",
    "llm_languages": [],
    "llm_min_years": -1,
-   "id": "himalayas:https://himalayas.app/companies/cogstate/jobs/madrs-clinical-rater-dutch-fluency",
+   "id": "himalayas:https://himalayas.app/companies/cogstate/jobs/madrs-clinical-rater-dutch-fluency-9449406090",
    "snippet": "About Cogstate At Cogstate , we’re advancing the science of brain health - making it faster, easier, and more accurate to assess cognition across clinical trials, healthcare settings, and everyday life. Our digital cognitive assessments are trusted by researchers, clinicians, and pharmaceutical partners around the world, helping to drive breakthroughs in neuroscience and improve outcomes for people living with neurol"
   },
   {
@@ -28537,7 +28436,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137427",
-   "snippet": "Remote - Prenosis Inc. is an artificial intelligence company pioneering precision medicine in acute care. Our Immunixâ¢ precision medicine platform drives the development of precision products and enables real-time delivery of optimal therapy. We've created and validated the fi... Please mention the word **STELLARLY** and tag RNDAuMTI0LjIzNC42OQ== when applying to show you read the job post completely (#RNDAuMTI0LjI"
+   "snippet": "Remote - Prenosis Inc. is an artificial intelligence company pioneering precision medicine in acute care. Our Immunixâ¢ precision medicine platform drives the development of precision products and enables real-time delivery of optimal therapy. We've created and validated the fi... Please mention the word **STELLARLY** and tag RMTMwLjEzMS4yMDQuMjI0 when applying to show you read the job post completely (#RMTMwLjEzMS4"
   },
   {
    "source": "ashby",
@@ -33109,36 +33008,6 @@
    "snippet": "ABOUT EXTRAC\n\nExTrac is a decision intelligence company used by governments, defence organisations, financial institutions, and corporates operating in complex, fast-moving environments. Our capabilities fuse curated data sources, domain-specific AI, and deep human expertise to transform information overload into clear, actionable foresight.\n\nOur ambition is to become the analytical backbone that organisations rely o"
   },
   {
-   "source": "remoteok",
-   "company": "iMerit Technology",
-   "title": "AI Trainer",
-   "url": "https://remoteOK.com/remote-jobs/remote-ai-trainer-imerit-technology-1137513",
-   "location": "US, UK, Canada, Australia + 35 other countries",
-   "remote": true,
-   "posted": "2026-10-14",
-   "employment_type": "",
-   "salary": "USD 50,000-70,000",
-   "eligibility": "eu_country",
-   "eligibility_reason": "location \"US, UK, Canada, Australia + 35 other countries\"",
-   "role": "AI Trainer / Evaluator",
-   "level": "mid",
-   "score": 43,
-   "reasons": [
-    "contract or part-time possible"
-   ],
-   "first_seen": "2026-11-12",
-   "language": "en",
-   "variants": 1,
-   "llm_status": "",
-   "llm_summary": "",
-   "rule_eligibility": "",
-   "llm_employment": "",
-   "llm_languages": [],
-   "llm_min_years": -1,
-   "id": "remoteok:1137513",
-   "snippet": "Remote | Independent Contractor | Get certified for future project opportunities Prove your skills. Get certified. Be ready for what comes next. Robotics AI is advancing rapidly, and high-quality video data helps intelligent systems better understand the world around them. We are inviting detail-oriented professionals to complete our certification process for potential robotics AI projects. Demonstrate your skills no"
-  },
-  {
    "source": "ashby",
    "company": "Leovegasgroup",
    "title": "Data Engineer",
@@ -34658,36 +34527,6 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "himalayas:https://himalayas.app/companies/x-ai/jobs/ai-tutor-spanish",
-   "snippet": "SpaceX was founded under the belief that a future where humanity is out exploring the stars is fundamentally more exciting than one where we are not. Today, SpaceX is actively developing the technologies to make this possible, with the ultimate goal of making life multiplanetary and expanding consciousness to the stars. SpaceXSI is building Super Intelligence to help humanity understand the universe. Our teams are bu"
-  },
-  {
-   "source": "himalayas",
-   "company": "x.ai",
-   "title": "AI Tutor, Irish - Temporary",
-   "url": "https://himalayas.app/companies/x-ai/jobs/ai-tutor-irish-temporary?utm_source=api",
-   "location": "Australia, Canada, United Kingdom, United States",
-   "remote": true,
-   "posted": "2026-11-14",
-   "employment_type": "Temporary",
-   "salary": "USD 35-45",
-   "eligibility": "eu_country",
-   "eligibility_reason": "allowed countries include united kingdom",
-   "role": "AI Trainer / Evaluator",
-   "level": "mid",
-   "score": 43,
-   "reasons": [
-    "posted this week"
-   ],
-   "first_seen": "2026-11-14",
-   "language": "en",
-   "variants": 1,
-   "llm_status": "",
-   "llm_summary": "",
-   "rule_eligibility": "",
-   "llm_employment": "",
-   "llm_languages": [],
-   "llm_min_years": -1,
-   "id": "himalayas:https://himalayas.app/companies/x-ai/jobs/ai-tutor-irish-temporary",
    "snippet": "SpaceX was founded under the belief that a future where humanity is out exploring the stars is fundamentally more exciting than one where we are not. Today, SpaceX is actively developing the technologies to make this possible, with the ultimate goal of making life multiplanetary and expanding consciousness to the stars. SpaceXSI is building Super Intelligence to help humanity understand the universe. Our teams are bu"
   },
   {
@@ -36239,7 +36078,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137114",
-   "snippet": "Remote - Most sales tools help you send emails. Weâre building something different.At Salesforge, weâre creating autonomous AI agents that can:Find the right prospectsGenerate highly personalized outreachRun conversationsAnd book meetingsAll without human invo... Please mention the word **EMPATHY** and tag RNDAuMTI0LjIzNC42OQ== when applying to show you read the job post completely (#RNDAuMTI0LjIzNC42OQ==). This "
+   "snippet": "Remote - Most sales tools help you send emails. Weâre building something different.At Salesforge, weâre creating autonomous AI agents that can:Find the right prospectsGenerate highly personalized outreachRun conversationsAnd book meetingsAll without human invo... Please mention the word **EMPATHY** and tag RMTMwLjEzMS4yMDQuMjI0 when applying to show you read the job post completely (#RMTMwLjEzMS4yMDQuMjI0). This "
   },
   {
    "source": "greenhouse",
@@ -37210,39 +37049,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137544",
-   "snippet": "Remote - Rain is the world's first AI Financial Health Platform, serving 3.5 million employees at leading organizations like McDonald's, Marriott, and T-Mobile. Rain works in the background to optimize every employee's financial life to prevent shortfalls and build long-term sta... Please mention the word **COVENANT** and tag RNDAuMTI0LjIzNC42OQ== when applying to show you read the job post completely (#RNDAuMTI0LjIz"
-  },
-  {
-   "source": "himalayas",
-   "company": "Safeguard Global",
-   "title": "Senior Data Engineer",
-   "url": "https://himalayas.app/companies/safeguard-global/jobs/senior-data-engineer?utm_source=api",
-   "location": "Portugal, Spain, United Kingdom",
-   "remote": true,
-   "posted": "2026-11-14",
-   "employment_type": "Full Time",
-   "salary": "EUR 75,000-75,000",
-   "eligibility": "eu_country",
-   "eligibility_reason": "allowed countries include portugal, spain, united kingdom",
-   "role": "Data Engineer",
-   "level": "senior",
-   "score": 41,
-   "reasons": [
-    "skills: python, aws",
-    "senior-level title",
-    "posted this week"
-   ],
-   "first_seen": "2026-11-14",
-   "language": "en",
-   "variants": 1,
-   "llm_status": "",
-   "llm_summary": "",
-   "rule_eligibility": "",
-   "llm_employment": "",
-   "llm_languages": [],
-   "llm_min_years": -1,
-   "id": "himalayas:https://himalayas.app/companies/safeguard-global/jobs/senior-data-engineer",
-   "snippet": "Imagine shaping the future of how data drives business decisions and AI innovation. As our Senior Data Engineer , you’ll help build a cutting-edge data mesh platform that empowers teams with scalable, reliable, and high-quality data. You love getting deep into architecture and tooling, but you also understand the bigger picture, how data transforms into real business value. In this role, your work will directly influ"
+   "snippet": "Remote - Rain is the world's first AI Financial Health Platform, serving 3.5 million employees at leading organizations like McDonald's, Marriott, and T-Mobile. Rain works in the background to optimize every employee's financial life to prevent shortfalls and build long-term sta... Please mention the word **COVENANT** and tag RMTMwLjEzMS4yMDQuMjI0 when applying to show you read the job post completely (#RMTMwLjEzMS4y"
   },
   {
    "source": "himalayas",
@@ -37303,7 +37110,7 @@
    "llm_languages": [],
    "llm_min_years": -1,
    "id": "remoteok:1137545",
-   "snippet": "Remote - Established in 1744, Sothebyâs promotes access and ownership of exceptional art and luxury objects through auctions, private sales and retail. Our deep expertise across 70 selling categories is supported by a leading technology platform and a global network of special... Please mention the word **EVALUATIVE** and tag RNDAuMTI0LjIzNC42OQ== when applying to show you read the job post completely (#RNDAuMTI0Lj"
+   "snippet": "Remote - Established in 1744, Sothebyâs promotes access and ownership of exceptional art and luxury objects through auctions, private sales and retail. Our deep expertise across 70 selling categories is supported by a leading technology platform and a global network of special... Please mention the word **EVALUATIVE** and tag RMTMwLjEzMS4yMDQuMjI0 when applying to show you read the job post completely (#RMTMwLjEzMS"
   },
   {
    "source": "himalayas",
@@ -38945,6 +38752,38 @@
    "llm_min_years": -1,
    "id": "hackernews:50339895",
    "snippet": "Hi, Alex and Jeremy here from UMH. 8 years ago, Jeremy was absolutely frustrated with the status quo of data infrastructure in manufacturing. Companies paid millions per year for \"shitty 90s software\" and are still doing that today, when there is much better software out there for open-source. So we decided that we can do this better, first founded a System Integrator, realized most of the tasks in setting up and mai"
+  },
+  {
+   "source": "himalayas",
+   "company": "Description Ciklum",
+   "title": "Senior Agentic Engineer",
+   "url": "https://himalayas.app/companies/description-ciklum/jobs/senior-agentic-engineer?utm_source=api",
+   "location": "Poland",
+   "remote": true,
+   "posted": "2026-11-14",
+   "employment_type": "Full Time",
+   "salary": "",
+   "eligibility": "eu_country",
+   "eligibility_reason": "allowed countries include poland",
+   "role": "AI / LLM Engineer",
+   "level": "senior",
+   "score": 39,
+   "reasons": [
+    "senior-level title",
+    "asks for 5+ years",
+    "posted this week"
+   ],
+   "first_seen": "2026-11-14",
+   "language": "en",
+   "variants": 1,
+   "llm_status": "",
+   "llm_summary": "",
+   "rule_eligibility": "",
+   "llm_employment": "",
+   "llm_languages": [],
+   "llm_min_years": -1,
+   "id": "himalayas:https://himalayas.app/companies/description-ciklum/jobs/senior-agentic-engineer",
+   "snippet": "Ciklum is looking for a Senior Agentic Engineer to join our team full-time in Poland. We are a custom product engineering company that supports both multinational organizations and scaling startups to solve their most complex business challenges. With a global team of over 4,000 highly skilled developers, consultants, analysts and product owners, we engineer technology that redefines industries and shapes the way peo"
   },
   {
    "source": "greenhouse",
