@@ -1,46 +1,46 @@
-# Job radar, 2026-11-13
+# Job radar, 2026-11-14
 
-**61 new** matching jobs today (1393 open in total). Top 15 new ones below.
+**51 new** matching jobs today (1385 open in total). Top 15 new ones below.
 
 Full list and application tracker: https://girimohan.github.io/remote-job-radar/
 
 | Score | Role | Job | Company | Open to | Why |
 |---|---|---|---|---|---|
-| 97 | AI / LLM Engineer | [Junior AI Engineer](https://himalayas.app/companies/census-sa/jobs/junior-ai-engineer?utm_source=api) | CENSUS SA | Europe | skills: python, rag, llm, docker, kubernetes, fine-tuning; junior-friendly title |
-| 87 | AI / LLM Engineer | [Adoption Specialist - Infrastructure & Agentic](https://jobs.ashbyhq.com/cohere/dc881634-ca66-46e5-90ff-43ad83080de2) | Cohere | Europe | skills: python, rag, llm, react, kubernetes, agents; posted this week |
-| 81 | ML Engineer / MLOps | [Junior Machine Learning Engineer](https://himalayas.app/companies/micro1/jobs/junior-machine-learning-engineer?utm_source=api) | micro1 | Worldwide | skills: python, agents; junior-friendly title |
-| 76 | Full-Stack Engineer | [Full Stack Developer](https://himalayas.app/companies/rounds/jobs/full-stack-developer?utm_source=api) | Rounds | Europe | skills: rag, llm, react, aws, fine-tuning, agents; asks for 5+ years |
-| 75 | Backend Engineer | [Graduate Software Engineer, Open Source and Linux, Canonical Ubuntu](https://jobicy.com/jobs/161672-graduate-software-engineer-open-source-and-linux-canonical-ubuntu-2) | Canonical | Europe | skills: python, kubernetes; junior-friendly title |
-| 75 | Backend Engineer | [Junior Software Engineer – Early Career (Strong Problem solving & Coding Focus) ](https://jobicy.com/jobs/155228-junior-software-engineer-early-career-strong-problem-solving-coding-focus-100-remote-within-spain-2) | Docplanner | One European country | skills: embeddings, react, typescript, aws, kubernetes, agents; junior-friendly title |
-| 74 | AI / LLM Engineer | [AI Engineer](https://himalayas.app/companies/creatio/jobs/ai-engineer?utm_source=api) | Creatio | One European country | skills: rag, llm, embeddings, docker, kubernetes, agents; posted this week |
-| 72 | Backend Engineer | [Junior Ubuntu Software Engineer](https://jobicy.com/jobs/161675-junior-ubuntu-software-engineer) | Canonical | Europe | skills: python; junior-friendly title |
-| 67 | Full-Stack Engineer | [Full Stack Developer Intern](https://himalayas.app/companies/asg-company/jobs/full-stack-developer-intern?utm_source=api) | ASG Company | Worldwide | skills: python; junior-friendly title |
-| 67 | Backend Engineer | [Software Engineer - SAR Processing Platform](https://jobs.ashbyhq.com/iceye/de792d17-acf3-4c8a-bf3f-f582ad84ea0a) | Iceye | Finland | skills: python, llm, docker, aws, kubernetes; asks for 5+ years |
-| 64 | AI / LLM Engineer | [Senior Software Engineer (Agentic Engineering, Europe)](https://jobs.ashbyhq.com/coder/e6eac654-0172-45ac-8598-d1a615f4886b) | Coder | One European country | skills: docker, postgres, react, typescript, aws, kubernetes; senior-level title |
-| 64 | Full-Stack Engineer | [Senior Product Engineer](https://jobicy.com/jobs/161764-senior-product-engineer-2) | Fever | One European country | skills: python, fastapi, rag, llm, langchain, docker; senior-level title |
-| 63 | Forward Deployed / Solutions Engineer | [Elm AI / Forward-Deployed Product Engineer / New York / London (REMOTE US/Europe](https://news.ycombinator.com/item?id=50481529) | Elm AI | Europe | skills: agents; posted this week |
-| 63 | Full-Stack Engineer | [Full Stack Developer (AI-First)](https://himalayas.app/companies/full-circle/jobs/full-stack-developer-ai-first-7734218517?utm_source=api) | Full Circle | One European country | skills: python, rag, next.js, react, typescript; posted this week |
-| 62 | Backend Engineer | [Software Engineer I - Frontend](https://himalayas.app/companies/ookla/jobs/software-engineer-i-frontend?utm_source=api) | Ookla | One European country | skills: python, react, typescript, aws; posted this week |
+| 75 | Data Engineer | [Senior Data Engineer](https://remotive.com/remote-jobs/data/senior-data-engineer-2091137) | Lemon.io | Europe | skills: python, llm, mlops, next.js, react, typescript; senior-level title |
+| 72 | AI / LLM Engineer | [AI Engineer (Technical Product Owner)](https://himalayas.app/companies/foxelli-group/jobs/ai-engineer-technical-product-owner-643559014?utm_source=api) | Foxelli Group  | One European country | skills: python, fastapi, langchain, next.js; contract or part-time possible |
+| 71 | Full-Stack Engineer | [SEEKING FREELANCE - Egypt (UTC+2, full EU/UK overlap) - Remote](https://news.ycombinator.com/item?id=50495944) | SEEKING FREELANCE | Europe | skills: next.js, typescript; asks for 4+ years |
+| 66 | ML Engineer / MLOps | [Research Engineer](https://jobs.ashbyhq.com/genomics/2741baad-49ac-454d-a4f7-7eab250f8dce) | Genomics | One European country | skills: python, llm, docker, aws; posted this week |
+| 65 | ML Engineer / MLOps | [Research Engineer Privacy and Anonymization](https://remoteOK.com/remote-jobs/remote-research-engineer-privacy-and-anonymization-pragmatike-1137792) | Pragmatike | Unclear (check) | skills: python, llm, agents; posted this week |
+| 65 | Backend Engineer | [Sr. Full-Stack Software Engineer, Remote](https://himalayas.app/companies/xperteez-technology/jobs/sr-full-stack-software-engineer-remote-6677362412?utm_source=api) | Xperteez Technology | Worldwide | skills: python, react, typescript; senior-level title |
+| 64 | AI / LLM Engineer | [Senior Full-Stack AI Engineer](https://himalayas.app/companies/parser/jobs/senior-full-stack-ai-engineer-6945104598?utm_source=api) | Parser | One European country | skills: python, fastapi, rag, llm, docker, next.js; senior-level title |
+| 64 | Forward Deployed / Solutions Engineer | [Microsoft Copilot / AI Solutions Engineer](https://himalayas.app/companies/stermedia/jobs/microsoft-copilot-ai-solutions-engineer?utm_source=api) | Stermedia | One European country | skills: python, rag, typescript, agents; asks for 2+ years |
+| 62 | ML Engineer / MLOps | [AI Applied Scientist](https://jobs.ashbyhq.com/maki/e81c2970-a3b4-4ee3-b068-254d0621dc50) | Maki | One European country | skills: python, llm, fine-tuning; posted this week |
+| 61 | Backend Engineer | [Software Engineer (Computer Use & Integrations) (m/w/d)](https://www.arbeitnow.com/jobs/companies/recare-deutschland-gmbh/remote-software-engineer-computer-use-integrations-berlin-434731) | Recare Deutschland GmbH | Unclear (check) | skills: python, typescript, agents; posted this week |
+| 60 | Backend Engineer | [Senior Security Platform Engineer - Secure Delivery](https://jobs.ashbyhq.com/Ashby/ae8fee4d-fd75-40c8-a049-6557384b15e0) | Ashby | Europe | skills: python, typescript; senior-level title |
+| 60 | AI / LLM Engineer | [Security Engineer for Agentic AI](https://himalayas.app/companies/brahma-ai/jobs/security-engineer-for-agentic-ai?utm_source=api) | BRAHMA AI | One European country | skills: python, llm, kubernetes, agents; asks for 5+ years |
+| 58 | Backend Engineer | [Platform Engineer (Backend Infrastructure)](https://job-boards.greenhouse.io/focalsystems/jobs/6261140004) | Focal Systems | One European country | skills: python, fastapi, aws, kubernetes; asks for 5+ years |
+| 58 | Backend Engineer | [Senior Software Engineer, Cloud Platform (EMEA)](https://jobs.ashbyhq.com/qdrant.tech/e367a1f8-80d4-425f-b03e-f9b53ba5f2b4) | Qdrant Tech | Europe | skills: rag, aws, kubernetes, agents; senior-level title |
+| 58 | Backend Engineer | [Senior Software Engineer, Cluster & Lifecycle (EMEA)](https://jobs.ashbyhq.com/qdrant.tech/da3d5253-5dc3-4543-afee-bb65126074a7) | Qdrant Tech | Europe | skills: rag, aws, kubernetes, agents; senior-level title |
 
 ## Today's funnel
 
-- 36,354 postings collected
-- 29,690 not one of your roles
-- 1,346 US-only, 599 other regions, 2,672 not remote
-- 58 from agencies, 331 duplicates, 265 below the score cut-off
-- **1,393 matches**
+- 36,295 postings collected
+- 29,561 not one of your roles
+- 1,330 US-only, 573 other regions, 2,628 not remote
+- 217 from agencies, 350 duplicates, 251 below the score cut-off
+- **1,385 matches**
 
 ## Sources
 
-- greenhouse: ok, 15,493 fetched, 382 matched (159 of 159 boards answered, 4 no longer exist)
-- lever: ok, 1,547 fetched, 14 matched (14 of 14 boards answered)
-- ashby: ok, 15,262 fetched, 853 matched (421 of 421 boards answered, 3 no longer exist)
+- greenhouse: ok, 15,441 fetched, 379 matched (159 of 159 boards answered, 4 no longer exist)
+- lever: ok, 1,550 fetched, 14 matched (14 of 14 boards answered)
+- ashby: ok, 15,244 fetched, 852 matched (421 of 421 boards answered, 3 no longer exist)
 - smartrecruiters: ok, 52 fetched, 9 matched (13 of 13 boards answered)
-- himalayas: ok, 2,000 fetched, 36 matched (newest 2,000 listings (100 pages))
-- remoteok: ok, 98 fetched, 16 matched
-- remotive: ok, 14 fetched, 5 matched
-- weworkremotely: ok, 100 fetched, 11 matched
-- jobicy: ok, 118 fetched, 13 matched (regions: europe, emea, anywhere)
-- arbeitnow: ok, 1,500 fetched, 1 matched (newest 1,500 listings (5 pages))
-- workingnomads: ok, 35 fetched, 8 matched
-- hackernews: ok, 135 fetched, 45 matched (Ask HN: Who is hiring? (November 2026))
+- himalayas: ok, 2,000 fetched, 27 matched (newest 2,000 listings (100 pages))
+- remoteok: ok, 97 fetched, 17 matched
+- remotive: ok, 16 fetched, 6 matched
+- weworkremotely: ok, 100 fetched, 9 matched
+- jobicy: ok, 121 fetched, 6 matched (regions: europe, emea, anywhere)
+- arbeitnow: ok, 1,500 fetched, 11 matched (newest 1,500 listings (5 pages))
+- workingnomads: ok, 36 fetched, 8 matched
+- hackernews: ok, 138 fetched, 47 matched (Ask HN: Who is hiring? (November 2026))
