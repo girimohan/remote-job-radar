@@ -1,46 +1,46 @@
-# Job radar, 2026-11-20
+# Job radar, 2026-11-21
 
-**71 new** matching jobs today (1361 open in total). Top 15 new ones below.
+**36 new** matching jobs today (1353 open in total). Top 15 new ones below.
 
 Full list and application tracker: https://girimohan.github.io/remote-job-radar/
 
 | Score | Role | Job | Company | Open to | Why |
 |---|---|---|---|---|---|
-| 85 | AI / LLM Engineer | [AI Developer](https://himalayas.app/companies/silent-eight/jobs/ai-developer?utm_source=api) | Silent Eight | One European country | skills: python, fastapi, rag, llm, langchain, llamaindex; asks for 4+ years |
-| 76 | AI / LLM Engineer | [AI Agent Tester – Remote (Worldwide)](https://himalayas.app/companies/remotejobsone/jobs/ai-agent-tester-remote-worldwide?utm_source=api) | RemoteJobsOne | Europe | skills: agents; asks for 2+ years |
-| 72 | Full-Stack Engineer | [Product Engineer - Integrations](https://jobs.ashbyhq.com/Kota/e715e45b-f44a-4ea0-b4f7-f8e1ea4fa75c) | Kota | Europe | skills: python, react, typescript, aws; asks for 3+ years |
-| 70 | Full-Stack Engineer | [Full-Stack Node.js & React Developer](https://himalayas.app/companies/human-power-bg/jobs/full-stack-node-js-react-developer?utm_source=api) | Human Power BG | Worldwide | skills: python, react, typescript, aws; posted this week |
-| 70 | Backend Engineer | [Software Engineer / Propr.xyz](https://www.arbeitnow.ch/jobs/companies/swissborg/remote-software-engineer-proprxyz-497002) | SwissBorg | Europe | skills: fastapi, next.js, react, typescript, aws; asks for 5+ years |
-| 68 | Backend Engineer | [Software Engineer](https://weworkremotely.com/remote-jobs/upsun-software-engineer) | Upsun | Worldwide | skills: python, typescript, agents; posted this week |
-| 67 | Backend Engineer | [Senior Backend Software Engineer](https://jobs.ashbyhq.com/iceye/de2950d6-f413-4e74-a1dd-4ef3c62b74ab) | Iceye | Finland | skills: python, react, typescript, aws, kubernetes; senior-level title |
-| 67 | Full-Stack Engineer | [Associate, Product Engineer (working student)](https://www.scandit.com/careers/job-description/?gh_jid=8405367) | Scandit | Finland | skills: python; junior-friendly title |
-| 66 | ML Engineer / MLOps | [Applied Scientist II - Advertiser Optimization](https://weworkremotely.com/remote-jobs/instacart-applied-scientist-ii-advertiser-optimization) | Instacart | Worldwide | skills: python; asks for 2+ years |
-| 65 | Backend Engineer | [Senior Backend Engineer - Payment Systems](https://himalayas.app/companies/codedecoders/jobs/senior-backend-engineer-payment-systems?utm_source=api) | CodeDecoders | Worldwide | skills: python, typescript, aws; senior-level title |
-| 64 | AI / LLM Engineer | [Senior AI Engineer](https://himalayas.app/companies/emerchantpay/jobs/senior-ai-engineer?utm_source=api) | emerchantpay | One European country | skills: python, fastapi, rag, llm, langchain, llamaindex; senior-level title |
-| 64 | ML Engineer / MLOps | [Applied Scientists — Machine Learning – Remote (Worldwide)](https://himalayas.app/companies/remotejobsone/jobs/applied-scientists-machine-learning-remote-worldwide?utm_source=api) | RemoteJobsOne | One European country | skills: python, agents; contract or part-time possible |
-| 64 | AI / LLM Engineer | [AI Engineer](https://www.solita.fi/positions/?gh_jid=7785554003) | Solita | Finland | skills: python, rag, llm, langchain, mlops, aws; posting is in Finnish |
-| 64 | AI / LLM Engineer | [Applied AI Engineer (all genders)](https://jobs.ashbyhq.com/wemolo/b071ce3f-1d92-434a-98d5-fcf206dd2058) | Wemolo | One European country | skills: python, rag, llm; asks for 3+ years |
-| 63 | Backend Engineer | [Software Engineer - Engineering Operations](https://jobs.ashbyhq.com/camunda/327f13d9-6054-46e5-96cd-bd757554f478) | Camunda | Worldwide | skills: python, docker, agents |
+| 84 | Forward Deployed / Solutions Engineer | [Forward Deployed Engineer (AI & Digital Experience Platforms)](https://himalayas.app/companies/aida-recruitment/jobs/forward-deployed-engineer-ai-digital-experience-platforms?utm_source=api) | AIDA Recruitment | Europe | skills: python, rag, langchain, llamaindex, typescript, agents; contract or part-time possible |
+| 78 | AI / LLM Engineer | [Senior AI Agent Engineer](https://himalayas.app/companies/bonapolia/jobs/senior-ai-agent-engineer?utm_source=api) | Bonapolia | Europe | skills: python, llm, docker, agents; senior-level title |
+| 75 | AI / LLM Engineer | [Forward Deployed AI Engineer](https://www.arbeitnow.co.uk/jobs/companies/gravity9/remote-forward-deployed-ai-engineer-birmingham-377104) | gravity9 | Unclear (check) | skills: python, rag, llm, llamaindex, embeddings, react; asks for 7+ years |
+| 74 | Backend Engineer | [Backend Software Engineer](https://jobicy.com/jobs/150975-backend-software-engineer-2) | Northflank | Europe | skills: python, docker, aws, kubernetes; asks for 3+ years |
+| 73 | Backend Engineer | [Software Engineer, AI Coding Tasks (Contract)](https://himalayas.app/companies/askable/jobs/software-engineer-ai-coding-tasks-contract-5812118603?utm_source=api) | Askable | Worldwide | skills: python, docker, typescript; asks for 2+ years |
+| 69 | ML Engineer / MLOps | [Machine Learning Engineer](https://jobs.lever.co/yuno/3577e844-65c6-41c6-ab7c-ebfad78de34f) | Yuno | Europe | skills: llm, mlops, docker, kubernetes, agents; asks for 8+ years |
+| 68 | Backend Engineer | [Distributed Systems Testing Software Engineer, Python / Go](https://jobicy.com/jobs/151013-distributed-systems-testing-software-engineer-python-go) | Canonical | Worldwide | skills: python, aws, kubernetes; posted this week |
+| 68 | Backend Engineer | [Software Engineer - Secure Container Images](https://jobicy.com/jobs/150994-software-engineer-secure-container-images) | Canonical | Worldwide | skills: python, docker, kubernetes; posted this week |
+| 65 | Forward Deployed / Solutions Engineer | [Solutions Engineer EMEA - Remote (Contract to Hire)](https://himalayas.app/companies/digistor/jobs/solutions-engineer-emea-remote-contract-to-hire?utm_source=api) | DigiStor | Europe | contract or part-time possible; posted this week |
+| 64 | Backend Engineer | [GPU Programming Software Engineer](https://himalayas.app/companies/micro1/jobs/gpu-programming-software-engineer?utm_source=api) | micro1 | Worldwide | contract or part-time possible; posted this week |
+| 61 | Forward Deployed / Solutions Engineer | [Freelance AI Consultant Dierenwelzijn](https://himalayas.app/companies/engiflex/jobs/freelance-ai-consultant-dierenwelzijn?utm_source=api) | EngiFlex | One European country | skills: python, llm, aws; contract or part-time possible |
+| 60 | Backend Engineer | [Senior Python Developer](https://himalayas.app/companies/blackbelt/jobs/senior-python-developer?utm_source=api) | BlackBelt Technology | One European country | skills: python, fastapi, rag, llm, docker, kubernetes; senior-level title |
+| 58 | AI Trainer / Evaluator | [Kinyarwanda Language Specialist - AI Trainer](https://himalayas.app/companies/inv/jobs/kinyarwanda-language-specialist-ai-trainer?utm_source=api) | Invisible Technologies | Worldwide | contract or part-time possible; posted this week |
+| 58 | Backend Engineer | [Staff Software Engineer, AI Engineering](https://weworkremotely.com/remote-jobs/tebra-staff-software-engineer-ai-engineering) | Tebra | Worldwide | skills: python, rag, langchain, llamaindex, pytorch, mlops; staff-level title |
+| 57 | Backend Engineer | [Software Engineer,  Financial Data & Payments](https://weworkremotely.com/remote-jobs/gusto-inc-software-engineer-financial-data-payments) | Gusto, Inc. | Worldwide | skills: react, typescript; asks for 10+ years |
 
 ## Today's funnel
 
-- 35,973 postings collected
-- 29,426 not one of your roles
-- 1,282 US-only, 608 other regions, 2,641 not remote
-- 54 from agencies, 255 duplicates, 345 below the score cut-off
-- **1,361 matches**
+- 35,945 postings collected
+- 29,449 not one of your roles
+- 1,261 US-only, 613 other regions, 2,623 not remote
+- 45 from agencies, 253 duplicates, 347 below the score cut-off
+- **1,353 matches**
 
 ## Sources
 
-- greenhouse: ok, 15,287 fetched, 376 matched (159 of 159 boards answered, 4 no longer exist)
-- lever: ok, 1,525 fetched, 12 matched (14 of 14 boards answered)
-- ashby: ok, 15,115 fetched, 833 matched (421 of 421 boards answered, 3 no longer exist)
+- greenhouse: ok, 15,245 fetched, 378 matched (159 of 159 boards answered, 4 no longer exist)
+- lever: ok, 1,529 fetched, 13 matched (14 of 14 boards answered)
+- ashby: ok, 15,120 fetched, 831 matched (421 of 421 boards answered, 3 no longer exist)
 - smartrecruiters: ok, 45 fetched, 8 matched (13 of 13 boards answered)
-- himalayas: ok, 2,000 fetched, 42 matched (newest 2,000 listings (100 pages))
-- remoteok: ok, 98 fetched, 11 matched
+- himalayas: ok, 2,000 fetched, 36 matched (newest 2,000 listings (100 pages))
+- remoteok: ok, 100 fetched, 3 matched
 - remotive: ok, 16 fetched, 5 matched
-- weworkremotely: ok, 97 fetched, 10 matched
-- jobicy: ok, 119 fetched, 7 matched (regions: europe, emea, anywhere)
-- arbeitnow: ok, 1,500 fetched, 4 matched (newest 1,500 listings (5 pages))
+- weworkremotely: ok, 98 fetched, 9 matched
+- jobicy: ok, 121 fetched, 11 matched (regions: europe, emea, anywhere)
+- arbeitnow: ok, 1,500 fetched, 7 matched (newest 1,500 listings (5 pages))
 - workingnomads: ok, 35 fetched, 7 matched
-- hackernews: ok, 136 fetched, 46 matched (Ask HN: Who is hiring? (November 2026))
+- hackernews: ok, 136 fetched, 45 matched (Ask HN: Who is hiring? (November 2026))
